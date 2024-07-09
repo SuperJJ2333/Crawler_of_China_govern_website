@@ -1,0 +1,1503 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximun-scale=1.0, user-scalable=yes">
+<title>鄂尔多斯市人民政府</title>
+<link href="css/ordosSmartSearch.css" rel="stylesheet" type="text/css"/>
+<link href="https://at.alicdn.com/t/font_2991244_z8q3whz85wk.css" rel="stylesheet" type="text/css"/>
+</head>
+<body class="body">
+
+<script type="text/javascript" src="js/yahoo-dom-event.js"></script>
+<script type="text/javascript" src="js/suggest-yui2.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.min.js"></script>
+<script type="text/javascript">
+        window.onload = function()
+        {
+            var ispromptshown = $.cookie('ispromptshown');
+            if (ispromptshown == "false") return ;
+
+            var dataUrl = 'searchsuggest?result=false';
+            new TRSWAS.Suggest('textfield', dataUrl,
+                    {
+                        useShim:false,
+                        resultFormat: '约%result%条结果'
+                    });
+        };
+    </script>
+	 <script type="text/javascript">
+        function goto(channelid)
+        {
+            if (document.searchform.searchword.value.trim()==''){
+                if(channelid=='282695'){
+                    window.location.href='news.jsp';
+                }
+                else{
+                    window.location.href='index.jsp?channelid='+channelid;
+                }
+            }
+            else{
+                document.searchform.channelid.value = channelid;
+                if(channelid=='261346'){
+                    document.searchform.perpage.value = 16;
+                }
+                else{
+                    document.searchform.perpage.value = '';
+                }
+                document.searchform.submit();
+            }
+        }
+        String.prototype.trim = function () {
+            return this.replace(/^\s*/, "").replace(/\s*$/, "");
+        }
+        function checkInput()
+        {
+            if (document.searchform.searchword.value.trim()==''){
+                document.searchform.searchword.focus();
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+    </script>
+
+
+<div class="shadow" style="display:none;width:100%;height:100%;position:fixed;left:0;top:0;background-color:#000;opacity:0.8;z-index:99;"></div>
+<div class="search_box_gj" style="display:none;position:fixed;left:0;top:0;width:100%;height:400px;z-index:100;background-color:#ffffff">
+<iframe src="advanced.jsp?channelid=297461" scrolling="no" frameborder="0" width="100%" height="100%">
+</iframe>
+<div class="yc" style="width:50px;height:50px;background-color:#f5f5f5;position:absolute;bottom:0;left:49%;cursor:pointer;">
+<img src="images/up.png">
+</div>
+</div>
+<div class="headimg" style="z-index:98">
+	<div class="container contyle">
+		<a href="http://www.ordos.gov.cn"><img class="headbg" style="" src="images/logo_03.png" alt=""/></a>
+		<div class="l_search_box" style="">
+			<form method="get" name="searchform" action="search" onsubmit="return checkInput();">
+				<input type="hidden" name="channelid" value="297461">
+				<input type="text" id="textfield" name="searchword" class="forminput" value="学习考察"/>
+				<input type="hidden" name="perpage" value="">
+				<input type="hidden" name="templet" value="">
+				<input type="hidden" name="token" value="">
+				<input type="submit" value="" class="submitbutton"/>
+				<img src="images/fw_ordoslg.png">
+				<a style="margin:-10px 0 0 10px;" href="javascript:;" class="searchbarlink mobile">高级搜索 </a>
+
+			</form>
+			<script>
+			$(".searchbarlink").click(function(){
+				$(".shadow").show();
+				$(".search_box_gj").slideDown();
+			})
+			$(".yc").click(function(){
+				$(".shadow").hide();
+				$(".search_box_gj").slideUp();
+			})
+			$("#classresult li").click(function(){
+				console.log("1");
+				$(this).addClass("searchtoolsactive").siblings().removeClass("searchtoolsactive");
+			})
+			</script>
+		</div>
+	</div>
+</div>
+<div class="nav">
+	<div class="container">
+		<ul id="classresult">
+			<li id="lelele"><a href="javascript:;" onclick="setDBType('');">门户网站</a></li>
+			<li id="XWYW"><a onclick="setDBType(1)" href="javascript:;">新闻要闻</a></li>
+			<li id="ZCWJ"><a onclick="setDBType(5)" href="javascript:;">政策文件</a></li>
+			<li id="BSFW"><a onclick="setDBType(4)" href="javascript:;">办事服务</a></li>
+			<li id="HDJL"><a onclick="setDBType(2)" href="javascript:;">互动交流</a></li>
+		</ul>
+	</div>
+</div>
+<div class="container" style="margin-top:30px;">
+	<div class="search_box_left">
+		<ul class="search_criteria_box mobile">
+			<li>排序方式：
+				<div class="search_criteria"><span class="fead">按相关度</span>&emsp;<i class="iconfont">&#xe62d;</i></div>
+				<div class="hide_box">
+					<ul>
+						<li id="tdsortrelevance"  onclick="setOrderBy('RELEVANCE');">按相关度排序</li>
+						<li id="tdsorttime-" onclick="setOrderBy('-DOCRELTIME');">按日期降序</li>
+						<li id="tdsorttime+" onclick="setOrderBy('+DOCRELTIME');">按日期升序</li>
+					</ul>
+				</div>
+			</li>
+			<li>搜索范围：
+				<div class="search_criteria"><span class="fead">搜全文</span>&emsp;<i class="iconfont">&#xe62d;</i></div>
+				<div class="hide_box">
+					<ul>
+						<li id="tdscopenolimit" onclick="setSearchScope('');">搜全文</li>
+						<li id="tdscopetitle" onclick="setSearchScope('TITLE');">搜标题</li>
+						<li id="tdscopecontent" onclick="setSearchScope('SEARCHCONTENT');">搜正文</li>
+					</ul>
+				</div>
+			</li>
+			<li>时间范围：
+				<div class="search_criteria"><span class="fead">时间不限</span>&emsp;<i class="iconfont">&#xe62d;</i></div>
+				<div class="hide_box">
+					<ul>
+						<li id="tdtimenolimit" onclick="setTimeScope('');">不限时间</li>
+						<li id="tdtime1day" onclick="setTimeScope('date');">一天内</li>
+						<li id="tdtime7days" onclick="setTimeScope('week');">一周内</li>
+						<li id="tdtime30days" onclick="setTimeScope('month');">一月内</li>
+						<li id="tdtime365days" onclick="setTimeScope('year');">一年内</li>
+					</ul>
+					<script>
+						Date.prototype.format = function(fmt) {
+						 var o = {
+							"M+" : this.getMonth()+1,                 //月份
+							"d+" : this.getDate(),                    //日
+							"h+" : this.getHours(),                   //小时
+							"m+" : this.getMinutes(),                 //分
+							"s+" : this.getSeconds(),                 //秒
+							"q+" : Math.floor((this.getMonth()+3)/3), //季度
+							"S"  : this.getMilliseconds()             //毫秒
+						};
+						if(/(y+)/.test(fmt)) {
+								fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+						}
+						 for(var k in o) {
+							if(new RegExp("("+ k +")").test(fmt)){
+								 fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+							 }
+						 }
+						return fmt;
+					};
+						var today = new Date();
+						var oneday = 1000 * 60 * 60 * 24;
+						var format='yyyy.MM.dd';
+						var day=new Date(today- oneday * 1);
+						var week=new Date(today- oneday * 7);
+						var month=new Date(today- oneday * 30);
+						var year=new Date(today- oneday * 365);
+						now = today.format(format);
+						day = day.format(format);
+						week = week.format(format);
+						month = month.format(format);
+						year = year.format(format);
+						$("#tdtime1day").removeAttr('onclick').attr("onclick","setTimeScope('date','"+day+"','"+now+"')");
+						$("#tdtime7days").removeAttr('onclick').attr("onclick","setTimeScope('week','"+week+"','"+now+"')");
+						$("#tdtime30days").removeAttr('onclick').attr("onclick","setTimeScope('month','"+month+"','"+now+"')");
+						$("#tdtime365days").removeAttr('onclick').attr("onclick","setTimeScope('year','"+year+"','"+now+"')");
+					</script>
+				</div>
+			</li>
+			<li style="float:right;color:#999;margin-left: 80px;">
+			找到相关结果约<span style="color:red;font-size:14px;font-weight:700;">69</span>条
+			</li>
+			<div class="clf"></div>
+		</ul>
+		<script>
+
+		$(".search_criteria").click(function(e){
+			if($(this).next(".hide_box").css("display") == "block"){
+				$(".hide_box").hide();
+				return;
+			}
+			if($(this).next(".hide_box").css("display") == "none"){
+				$(".hide_box").hide();
+				$(this).siblings(".hide_box").toggle();
+				e.stopPropagation();
+				return;
+			}
+		});
+
+		$(document).click(function(){
+			$(".hide_box").hide();
+		})
+
+		$(".hide_box ul li").click(function(){
+			$(this).parents(".hide_box").prev(".search_criteria").find(".fead").text($(this).text());
+			$(".hide_box").hide();
+		})
+		</script>
+		<div class="outline l_zhuti_box" style="">
+	<div>
+		 <div class="pinyin" style="float:left;height:32px;line-height:32px;color:#999;">
+
+		 </div>
+		 <script language="javascript">
+		 var inputs = '学习考察'
+			if(/^[a-zA-Z]*$/.test(inputs)){
+				var str = '';
+				$(str)[0].click();
+			}
+		 </script>
+
+
+		<div style="clear:both;"></div>
+
+
+</div>
+<div style="clear: both;"></div>
+
+<script language="javascript">
+	function setAdvancedWords()
+	{
+	    document.outlinesearchform.andsen.value = '';
+	    document.outlinesearchform.total.value = '';
+	    document.outlinesearchform.orsen.value = '';
+	    document.outlinesearchform.exclude.value = '';
+	}
+	function setDBType (type) {
+		setAdvancedWords();
+		if(type != ""){
+			document.outlinesearchform.SOURCEDB.value = type;
+			//document.outlinesearchform.searchscope.value = "TITLE";
+		}
+		if(type == ""){
+			document.outlinesearchform.SOURCEDB.value = type;
+		}
+        document.outlinesearchform.submit();
+	}
+    function setSearchScope(type) {
+        setAdvancedWords();
+        document.outlinesearchform.searchscope.value = type;
+        document.outlinesearchform.submit();
+
+    }
+    function setTimeScope(type,date,now) {
+        setAdvancedWords();
+        document.outlinesearchform.timescope.value = type;
+        document.outlinesearchform.timescopedate.value = date;
+        document.outlinesearchform.timescopenow.value = now;
+        document.outlinesearchform.timescopecolumn.value = 'DOCRELTIME';
+        document.outlinesearchform.submit();
+
+    }
+    function setOrderBy(type) {
+        setAdvancedWords();
+        document.outlinesearchform.orderby.value = type;
+        document.outlinesearchform.submit();
+    }
+
+</script>
+
+<table class="l_table">
+<tr class="l_tr">
+
+<td class="searchresult l_td">
+
+<ol class="datalists">
+
+
+		<script>
+			var msgtype = "1";
+			var docNo = "http://www.ordos.gov.cn/zzms/slh_ldhd/202304/t20230428_3385991.html";
+			var REGION_CODE = "3385991";
+			var content = "接，精准谋划实施合作项目，助力鄂尔多斯高质量发展。　　期间，杜汇良还来到芜湖市产业创新馆，<font color=#FF0000>学习考察</font>产业转型升级、科技创新等情况。　　市委常委、副市长姜波，有关旗区和部门负责同志分别参加活动...";
+			var source = "《鄂尔多斯日报》"
+			source = source.length>0 ? source : "鄂尔多斯市人民政府";
+			var GWSX = "";
+			GESX = GWSX == 1 ? "有效" : "有效";
+			var str = "";
+			if(msgtype == "1"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/zzms/slh_ldhd/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "2"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/hd_127898/szrx/ldgb/201911/t20191108_2521840.html?flowcode=http://www.ordos.gov.cn/zzms/slh_ldhd/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "3"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/hd_127898/szxx/xjkd/201911/t20191111_2522669.html?flowcode=http://www.ordos.gov.cn/zzms/slh_ldhd/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "4"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://zwfw.nmg.gov.cn/handle_affairs_detail?item_detail_id=http://www.ordos.gov.cn/zzms/slh_ldhd/202304/t20230428_3385991.html&regionCode=150600000000&record=istrue" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div>'+
+					'<div class="searchresultcon"><table class="zwfwtable" style="border-collapse: collapse;border:1px solid #ccc;width:100%;">'+
+					'<tr><td width="100" style="background-color:#fafafa;font-weight:bold;">在线办理</td><td width="200" style="text-align:left;"><a target="_blank" href="http://zwfw.nmg.gov.cn/handle_affairs_detail?item_detail_id=http://www.ordos.gov.cn/zzms/slh_ldhd/202304/t20230428_3385991.html&regionCode=150600000000&record=istrue">立即办理</a></td><td width="100" style="background-color:#fafafa;font-weight:bold;">在线咨询</td><td width="200" style="text-align:left;"><a target="_blank" href="http://zwfw.nmg.gov.cn/consulation?itemId=http://www.ordos.gov.cn/zzms/slh_ldhd/202304/t20230428_3385991.html&regionCode=150600000000">立即咨询</a></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">事项类型</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">服务对象</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">实施主体</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">咨询电话</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">所属盟市</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">行使层级</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">办理地点</td><td colspan="3" style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">摘 要</td><td colspan="3" style="text-align:left;">'+content+'...</td></tr>'+
+					'</table><br/>' +
+					'<span class="searchresultresource">《鄂尔多斯日报》 &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "5"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/zzms/slh_ldhd/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div>'+
+					'<div class="searchresultcon"><table class="zwfwtable" style="border-collapse: collapse;border:1px solid #ccc;width:100%;">'+
+					'<tr><td width="100" style="background-color:#fafafa;font-weight:bold;">文号</td><td width="200" style="text-align:left;"></td><td width="100" style="background-color:#fafafa;font-weight:bold;">发布机构</td><td width="200" style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">主题分类</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">公文时效</td><td style="text-align:left;">'+GWSX+'</td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">摘 要</td><td colspan="3" style="text-align:left;">'+content+'...</td></tr>'+
+					'</table><br/>' +
+					'<span class="searchresultresource">市人民政府办公室 &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "6"){
+				str = '<li style="margin-bottom:40px;font-size: 14px;">' +
+					'<div style="float:left;"><a target="_blank" href="http://www.ordos.gov.cn/zzms/slh_ldhd/202304/t20230428_3385991.html"><img width="130" src=""></a></div>'+
+					'<div style="float:left;margin-left:40px;width:610px;">'+
+					'<p style="margin:3px 0 13px 0;"><a class="leaderstyle" target="_blank" href="http://www.ordos.gov.cn/zzms/slh_ldhd/202304/t20230428_3385991.html">杜汇良赴长三角地区学习考察、洽谈合作</a></p>'+
+					'<p style="text-indent: 2rem;line-height:2;">技术、品牌、市场等优势，持续加强与我市沟通对接，精准谋划实施合作项目，助力鄂尔多斯高质量发展。　　期间，杜汇良还来到芜湖市产业创新馆，<font color=#FF0000>学习考察</font>产业转型升级、科技创新等情况。　　市委常委、副市长姜波，有关旗区和部门负责同志分别参加活动。　　...</p>'+
+					'<p><strong>分管工作：</strong></p>'+
+					'</div>'+
+					'<div class="clf"></div>'+
+					'</li>'
+					document.write(str);
+			}
+		</script>
+
+
+
+		<script>
+			var msgtype = "1";
+			var docNo = "http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html";
+			var REGION_CODE = "3385991";
+			var content = "接，精准谋划实施合作项目，助力鄂尔多斯高质量发展。　　期间，杜汇良还来到芜湖市产业创新馆，<font color=#FF0000>学习考察</font>产业转型升级、科技创新等情况。　　市委常委、副市长姜波，有关旗区和部门负责同志分别参加活动...";
+			var source = "《鄂尔多斯日报》"
+			source = source.length>0 ? source : "鄂尔多斯市人民政府";
+			var GWSX = "";
+			GESX = GWSX == 1 ? "有效" : "有效";
+			var str = "";
+			if(msgtype == "1"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "2"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/hd_127898/szrx/ldgb/201911/t20191108_2521840.html?flowcode=http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "3"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/hd_127898/szxx/xjkd/201911/t20191111_2522669.html?flowcode=http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "4"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://zwfw.nmg.gov.cn/handle_affairs_detail?item_detail_id=http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html&regionCode=150600000000&record=istrue" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div>'+
+					'<div class="searchresultcon"><table class="zwfwtable" style="border-collapse: collapse;border:1px solid #ccc;width:100%;">'+
+					'<tr><td width="100" style="background-color:#fafafa;font-weight:bold;">在线办理</td><td width="200" style="text-align:left;"><a target="_blank" href="http://zwfw.nmg.gov.cn/handle_affairs_detail?item_detail_id=http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html&regionCode=150600000000&record=istrue">立即办理</a></td><td width="100" style="background-color:#fafafa;font-weight:bold;">在线咨询</td><td width="200" style="text-align:left;"><a target="_blank" href="http://zwfw.nmg.gov.cn/consulation?itemId=http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html&regionCode=150600000000">立即咨询</a></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">事项类型</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">服务对象</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">实施主体</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">咨询电话</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">所属盟市</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">行使层级</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">办理地点</td><td colspan="3" style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">摘 要</td><td colspan="3" style="text-align:left;">'+content+'...</td></tr>'+
+					'</table><br/>' +
+					'<span class="searchresultresource">《鄂尔多斯日报》 &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "5"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div>'+
+					'<div class="searchresultcon"><table class="zwfwtable" style="border-collapse: collapse;border:1px solid #ccc;width:100%;">'+
+					'<tr><td width="100" style="background-color:#fafafa;font-weight:bold;">文号</td><td width="200" style="text-align:left;"></td><td width="100" style="background-color:#fafafa;font-weight:bold;">发布机构</td><td width="200" style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">主题分类</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">公文时效</td><td style="text-align:left;">'+GWSX+'</td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">摘 要</td><td colspan="3" style="text-align:left;">'+content+'...</td></tr>'+
+					'</table><br/>' +
+					'<span class="searchresultresource">市人民政府办公室 &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "6"){
+				str = '<li style="margin-bottom:40px;font-size: 14px;">' +
+					'<div style="float:left;"><a target="_blank" href="http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html"><img width="130" src=""></a></div>'+
+					'<div style="float:left;margin-left:40px;width:610px;">'+
+					'<p style="margin:3px 0 13px 0;"><a class="leaderstyle" target="_blank" href="http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html">杜汇良赴长三角地区学习考察、洽谈合作</a></p>'+
+					'<p style="text-indent: 2rem;line-height:2;">技术、品牌、市场等优势，持续加强与我市沟通对接，精准谋划实施合作项目，助力鄂尔多斯高质量发展。　　期间，杜汇良还来到芜湖市产业创新馆，<font color=#FF0000>学习考察</font>产业转型升级、科技创新等情况。　　市委常委、副市长姜波，有关旗区和部门负责同志分别参加活动。　　...</p>'+
+					'<p><strong>分管工作：</strong></p>'+
+					'</div>'+
+					'<div class="clf"></div>'+
+					'</li>'
+					document.write(str);
+			}
+		</script>
+
+
+
+		<script>
+			var msgtype = "1";
+			var docNo = "http://www.ordos.gov.cn/zzms/jrgz/202304/t20230428_3385991.html";
+			var REGION_CODE = "3385991";
+			var content = "接，精准谋划实施合作项目，助力鄂尔多斯高质量发展。　　期间，杜汇良还来到芜湖市产业创新馆，<font color=#FF0000>学习考察</font>产业转型升级、科技创新等情况。　　市委常委、副市长姜波，有关旗区和部门负责同志分别参加活动...";
+			var source = "《鄂尔多斯日报》"
+			source = source.length>0 ? source : "鄂尔多斯市人民政府";
+			var GWSX = "";
+			GESX = GWSX == 1 ? "有效" : "有效";
+			var str = "";
+			if(msgtype == "1"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/zzms/jrgz/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "2"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/hd_127898/szrx/ldgb/201911/t20191108_2521840.html?flowcode=http://www.ordos.gov.cn/zzms/jrgz/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "3"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/hd_127898/szxx/xjkd/201911/t20191111_2522669.html?flowcode=http://www.ordos.gov.cn/zzms/jrgz/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "4"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://zwfw.nmg.gov.cn/handle_affairs_detail?item_detail_id=http://www.ordos.gov.cn/zzms/jrgz/202304/t20230428_3385991.html&regionCode=150600000000&record=istrue" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div>'+
+					'<div class="searchresultcon"><table class="zwfwtable" style="border-collapse: collapse;border:1px solid #ccc;width:100%;">'+
+					'<tr><td width="100" style="background-color:#fafafa;font-weight:bold;">在线办理</td><td width="200" style="text-align:left;"><a target="_blank" href="http://zwfw.nmg.gov.cn/handle_affairs_detail?item_detail_id=http://www.ordos.gov.cn/zzms/jrgz/202304/t20230428_3385991.html&regionCode=150600000000&record=istrue">立即办理</a></td><td width="100" style="background-color:#fafafa;font-weight:bold;">在线咨询</td><td width="200" style="text-align:left;"><a target="_blank" href="http://zwfw.nmg.gov.cn/consulation?itemId=http://www.ordos.gov.cn/zzms/jrgz/202304/t20230428_3385991.html&regionCode=150600000000">立即咨询</a></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">事项类型</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">服务对象</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">实施主体</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">咨询电话</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">所属盟市</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">行使层级</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">办理地点</td><td colspan="3" style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">摘 要</td><td colspan="3" style="text-align:left;">'+content+'...</td></tr>'+
+					'</table><br/>' +
+					'<span class="searchresultresource">《鄂尔多斯日报》 &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "5"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/zzms/jrgz/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div>'+
+					'<div class="searchresultcon"><table class="zwfwtable" style="border-collapse: collapse;border:1px solid #ccc;width:100%;">'+
+					'<tr><td width="100" style="background-color:#fafafa;font-weight:bold;">文号</td><td width="200" style="text-align:left;"></td><td width="100" style="background-color:#fafafa;font-weight:bold;">发布机构</td><td width="200" style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">主题分类</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">公文时效</td><td style="text-align:left;">'+GWSX+'</td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">摘 要</td><td colspan="3" style="text-align:left;">'+content+'...</td></tr>'+
+					'</table><br/>' +
+					'<span class="searchresultresource">市人民政府办公室 &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "6"){
+				str = '<li style="margin-bottom:40px;font-size: 14px;">' +
+					'<div style="float:left;"><a target="_blank" href="http://www.ordos.gov.cn/zzms/jrgz/202304/t20230428_3385991.html"><img width="130" src=""></a></div>'+
+					'<div style="float:left;margin-left:40px;width:610px;">'+
+					'<p style="margin:3px 0 13px 0;"><a class="leaderstyle" target="_blank" href="http://www.ordos.gov.cn/zzms/jrgz/202304/t20230428_3385991.html">杜汇良赴长三角地区学习考察、洽谈合作</a></p>'+
+					'<p style="text-indent: 2rem;line-height:2;">技术、品牌、市场等优势，持续加强与我市沟通对接，精准谋划实施合作项目，助力鄂尔多斯高质量发展。　　期间，杜汇良还来到芜湖市产业创新馆，<font color=#FF0000>学习考察</font>产业转型升级、科技创新等情况。　　市委常委、副市长姜波，有关旗区和部门负责同志分别参加活动。　　...</p>'+
+					'<p><strong>分管工作：</strong></p>'+
+					'</div>'+
+					'<div class="clf"></div>'+
+					'</li>'
+					document.write(str);
+			}
+		</script>
+
+
+
+		<script>
+			var msgtype = "1";
+			var docNo = "http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html";
+			var REGION_CODE = "3385991";
+			var content = "接，精准谋划实施合作项目，助力鄂尔多斯高质量发展。　　期间，杜汇良还来到芜湖市产业创新馆，<font color=#FF0000>学习考察</font>产业转型升级、科技创新等情况。　　市委常委、副市长姜波，有关旗区和部门负责同志分别参加活动...";
+			var source = "《鄂尔多斯日报》"
+			source = source.length>0 ? source : "鄂尔多斯市人民政府";
+			var GWSX = "";
+			GESX = GWSX == 1 ? "有效" : "有效";
+			var str = "";
+			if(msgtype == "1"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "2"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/hd_127898/szrx/ldgb/201911/t20191108_2521840.html?flowcode=http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "3"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/hd_127898/szxx/xjkd/201911/t20191111_2522669.html?flowcode=http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "4"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://zwfw.nmg.gov.cn/handle_affairs_detail?item_detail_id=http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html&regionCode=150600000000&record=istrue" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div>'+
+					'<div class="searchresultcon"><table class="zwfwtable" style="border-collapse: collapse;border:1px solid #ccc;width:100%;">'+
+					'<tr><td width="100" style="background-color:#fafafa;font-weight:bold;">在线办理</td><td width="200" style="text-align:left;"><a target="_blank" href="http://zwfw.nmg.gov.cn/handle_affairs_detail?item_detail_id=http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html&regionCode=150600000000&record=istrue">立即办理</a></td><td width="100" style="background-color:#fafafa;font-weight:bold;">在线咨询</td><td width="200" style="text-align:left;"><a target="_blank" href="http://zwfw.nmg.gov.cn/consulation?itemId=http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html&regionCode=150600000000">立即咨询</a></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">事项类型</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">服务对象</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">实施主体</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">咨询电话</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">所属盟市</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">行使层级</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">办理地点</td><td colspan="3" style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">摘 要</td><td colspan="3" style="text-align:left;">'+content+'...</td></tr>'+
+					'</table><br/>' +
+					'<span class="searchresultresource">《鄂尔多斯日报》 &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "5"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div>'+
+					'<div class="searchresultcon"><table class="zwfwtable" style="border-collapse: collapse;border:1px solid #ccc;width:100%;">'+
+					'<tr><td width="100" style="background-color:#fafafa;font-weight:bold;">文号</td><td width="200" style="text-align:left;"></td><td width="100" style="background-color:#fafafa;font-weight:bold;">发布机构</td><td width="200" style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">主题分类</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">公文时效</td><td style="text-align:left;">'+GWSX+'</td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">摘 要</td><td colspan="3" style="text-align:left;">'+content+'...</td></tr>'+
+					'</table><br/>' +
+					'<span class="searchresultresource">市人民政府办公室 &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "6"){
+				str = '<li style="margin-bottom:40px;font-size: 14px;">' +
+					'<div style="float:left;"><a target="_blank" href="http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html"><img width="130" src=""></a></div>'+
+					'<div style="float:left;margin-left:40px;width:610px;">'+
+					'<p style="margin:3px 0 13px 0;"><a class="leaderstyle" target="_blank" href="http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html">杜汇良赴长三角地区学习考察、洽谈合作</a></p>'+
+					'<p style="text-indent: 2rem;line-height:2;">技术、品牌、市场等优势，持续加强与我市沟通对接，精准谋划实施合作项目，助力鄂尔多斯高质量发展。　　期间，杜汇良还来到芜湖市产业创新馆，<font color=#FF0000>学习考察</font>产业转型升级、科技创新等情况。　　市委常委、副市长姜波，有关旗区和部门负责同志分别参加活动。　　...</p>'+
+					'<p><strong>分管工作：</strong></p>'+
+					'</div>'+
+					'<div class="clf"></div>'+
+					'</li>'
+					document.write(str);
+			}
+		</script>
+
+
+
+		<script>
+			var msgtype = "1";
+			var docNo = "http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html";
+			var REGION_CODE = "3385991";
+			var content = "接，精准谋划实施合作项目，助力鄂尔多斯高质量发展。　　期间，杜汇良还来到芜湖市产业创新馆，<font color=#FF0000>学习考察</font>产业转型升级、科技创新等情况。　　市委常委、副市长姜波，有关旗区和部门负责同志分别参加活动...";
+			var source = "《鄂尔多斯日报》"
+			source = source.length>0 ? source : "鄂尔多斯市人民政府";
+			var GWSX = "";
+			GESX = GWSX == 1 ? "有效" : "有效";
+			var str = "";
+			if(msgtype == "1"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "2"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/hd_127898/szrx/ldgb/201911/t20191108_2521840.html?flowcode=http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "3"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/hd_127898/szxx/xjkd/201911/t20191111_2522669.html?flowcode=http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "4"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://zwfw.nmg.gov.cn/handle_affairs_detail?item_detail_id=http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html&regionCode=150600000000&record=istrue" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div>'+
+					'<div class="searchresultcon"><table class="zwfwtable" style="border-collapse: collapse;border:1px solid #ccc;width:100%;">'+
+					'<tr><td width="100" style="background-color:#fafafa;font-weight:bold;">在线办理</td><td width="200" style="text-align:left;"><a target="_blank" href="http://zwfw.nmg.gov.cn/handle_affairs_detail?item_detail_id=http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html&regionCode=150600000000&record=istrue">立即办理</a></td><td width="100" style="background-color:#fafafa;font-weight:bold;">在线咨询</td><td width="200" style="text-align:left;"><a target="_blank" href="http://zwfw.nmg.gov.cn/consulation?itemId=http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html&regionCode=150600000000">立即咨询</a></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">事项类型</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">服务对象</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">实施主体</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">咨询电话</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">所属盟市</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">行使层级</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">办理地点</td><td colspan="3" style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">摘 要</td><td colspan="3" style="text-align:left;">'+content+'...</td></tr>'+
+					'</table><br/>' +
+					'<span class="searchresultresource">《鄂尔多斯日报》 &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "5"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div>'+
+					'<div class="searchresultcon"><table class="zwfwtable" style="border-collapse: collapse;border:1px solid #ccc;width:100%;">'+
+					'<tr><td width="100" style="background-color:#fafafa;font-weight:bold;">文号</td><td width="200" style="text-align:left;"></td><td width="100" style="background-color:#fafafa;font-weight:bold;">发布机构</td><td width="200" style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">主题分类</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">公文时效</td><td style="text-align:left;">'+GWSX+'</td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">摘 要</td><td colspan="3" style="text-align:left;">'+content+'...</td></tr>'+
+					'</table><br/>' +
+					'<span class="searchresultresource">市人民政府办公室 &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "6"){
+				str = '<li style="margin-bottom:40px;font-size: 14px;">' +
+					'<div style="float:left;"><a target="_blank" href="http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html"><img width="130" src=""></a></div>'+
+					'<div style="float:left;margin-left:40px;width:610px;">'+
+					'<p style="margin:3px 0 13px 0;"><a class="leaderstyle" target="_blank" href="http://www.ordos.gov.cn/xw_127672/jreeds/202304/t20230428_3385991.html">杜汇良赴长三角地区学习考察、洽谈合作</a></p>'+
+					'<p style="text-indent: 2rem;line-height:2;">技术、品牌、市场等优势，持续加强与我市沟通对接，精准谋划实施合作项目，助力鄂尔多斯高质量发展。　　期间，杜汇良还来到芜湖市产业创新馆，<font color=#FF0000>学习考察</font>产业转型升级、科技创新等情况。　　市委常委、副市长姜波，有关旗区和部门负责同志分别参加活动。　　...</p>'+
+					'<p><strong>分管工作：</strong></p>'+
+					'</div>'+
+					'<div class="clf"></div>'+
+					'</li>'
+					document.write(str);
+			}
+		</script>
+
+
+
+		<script>
+			var msgtype = "1";
+			var docNo = "http://www.ordos.gov.cn/gk_128120/ldcy/zfld/jiangbo/gwhd/202304/t20230428_3385991.html";
+			var REGION_CODE = "3385991";
+			var content = "接，精准谋划实施合作项目，助力鄂尔多斯高质量发展。　　期间，杜汇良还来到芜湖市产业创新馆，<font color=#FF0000>学习考察</font>产业转型升级、科技创新等情况。　　市委常委、副市长姜波，有关旗区和部门负责同志分别参加活动...";
+			var source = "《鄂尔多斯日报》"
+			source = source.length>0 ? source : "鄂尔多斯市人民政府";
+			var GWSX = "";
+			GESX = GWSX == 1 ? "有效" : "有效";
+			var str = "";
+			if(msgtype == "1"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/gk_128120/ldcy/zfld/jiangbo/gwhd/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "2"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/hd_127898/szrx/ldgb/201911/t20191108_2521840.html?flowcode=http://www.ordos.gov.cn/gk_128120/ldcy/zfld/jiangbo/gwhd/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "3"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/hd_127898/szxx/xjkd/201911/t20191111_2522669.html?flowcode=http://www.ordos.gov.cn/gk_128120/ldcy/zfld/jiangbo/gwhd/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "4"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://zwfw.nmg.gov.cn/handle_affairs_detail?item_detail_id=http://www.ordos.gov.cn/gk_128120/ldcy/zfld/jiangbo/gwhd/202304/t20230428_3385991.html&regionCode=150600000000&record=istrue" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div>'+
+					'<div class="searchresultcon"><table class="zwfwtable" style="border-collapse: collapse;border:1px solid #ccc;width:100%;">'+
+					'<tr><td width="100" style="background-color:#fafafa;font-weight:bold;">在线办理</td><td width="200" style="text-align:left;"><a target="_blank" href="http://zwfw.nmg.gov.cn/handle_affairs_detail?item_detail_id=http://www.ordos.gov.cn/gk_128120/ldcy/zfld/jiangbo/gwhd/202304/t20230428_3385991.html&regionCode=150600000000&record=istrue">立即办理</a></td><td width="100" style="background-color:#fafafa;font-weight:bold;">在线咨询</td><td width="200" style="text-align:left;"><a target="_blank" href="http://zwfw.nmg.gov.cn/consulation?itemId=http://www.ordos.gov.cn/gk_128120/ldcy/zfld/jiangbo/gwhd/202304/t20230428_3385991.html&regionCode=150600000000">立即咨询</a></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">事项类型</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">服务对象</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">实施主体</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">咨询电话</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">所属盟市</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">行使层级</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">办理地点</td><td colspan="3" style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">摘 要</td><td colspan="3" style="text-align:left;">'+content+'...</td></tr>'+
+					'</table><br/>' +
+					'<span class="searchresultresource">《鄂尔多斯日报》 &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "5"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">今日鄂尔多斯</span>' +
+					'<a href="http://www.ordos.gov.cn/gk_128120/ldcy/zfld/jiangbo/gwhd/202304/t20230428_3385991.html" class="searchresulttitle" target="_blank">杜汇良赴长三角地区<font color=#FF0000>学习考察</font>、洽谈合作</a>' +
+					'</div>'+
+					'<div class="searchresultcon"><table class="zwfwtable" style="border-collapse: collapse;border:1px solid #ccc;width:100%;">'+
+					'<tr><td width="100" style="background-color:#fafafa;font-weight:bold;">文号</td><td width="200" style="text-align:left;"></td><td width="100" style="background-color:#fafafa;font-weight:bold;">发布机构</td><td width="200" style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">主题分类</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">公文时效</td><td style="text-align:left;">'+GWSX+'</td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">摘 要</td><td colspan="3" style="text-align:left;">'+content+'...</td></tr>'+
+					'</table><br/>' +
+					'<span class="searchresultresource">市人民政府办公室 &nbsp;&nbsp;2023-04-28&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "6"){
+				str = '<li style="margin-bottom:40px;font-size: 14px;">' +
+					'<div style="float:left;"><a target="_blank" href="http://www.ordos.gov.cn/gk_128120/ldcy/zfld/jiangbo/gwhd/202304/t20230428_3385991.html"><img width="130" src=""></a></div>'+
+					'<div style="float:left;margin-left:40px;width:610px;">'+
+					'<p style="margin:3px 0 13px 0;"><a class="leaderstyle" target="_blank" href="http://www.ordos.gov.cn/gk_128120/ldcy/zfld/jiangbo/gwhd/202304/t20230428_3385991.html">杜汇良赴长三角地区学习考察、洽谈合作</a></p>'+
+					'<p style="text-indent: 2rem;line-height:2;">技术、品牌、市场等优势，持续加强与我市沟通对接，精准谋划实施合作项目，助力鄂尔多斯高质量发展。　　期间，杜汇良还来到芜湖市产业创新馆，<font color=#FF0000>学习考察</font>产业转型升级、科技创新等情况。　　市委常委、副市长姜波，有关旗区和部门负责同志分别参加活动。　　...</p>'+
+					'<p><strong>分管工作：</strong></p>'+
+					'</div>'+
+					'<div class="clf"></div>'+
+					'</li>'
+					document.write(str);
+			}
+		</script>
+
+
+
+		<script>
+			var msgtype = "1";
+			var docNo = "http://www.ordos.gov.cn/gk_128120/shjz/yljz/201909/t20190905_2497574.html";
+			var REGION_CODE = "2497574";
+			var content = "9月5日，四川省卫生健康委一行6人到鄂尔多斯市<font color=#FF0000>学习考察</font>，自治区卫生健康委、市卫生健康委相关负责人及其他在家领导陪同考察。考察组通过查阅资料、实地查看、听取汇报的方式对鄂尔多斯市健康扶贫和民族卫...";
+			var source = ""
+			source = source.length>0 ? source : "鄂尔多斯市人民政府";
+			var GWSX = "";
+			GESX = GWSX == 1 ? "有效" : "有效";
+			var str = "";
+			if(msgtype == "1"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">医疗救助</span>' +
+					'<a href="http://www.ordos.gov.cn/gk_128120/shjz/yljz/201909/t20190905_2497574.html" class="searchresulttitle" target="_blank">四川省卫生健康委一行到鄂尔多斯市<font color=#FF0000>学习考察</font></a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2019-09-05&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "2"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">医疗救助</span>' +
+					'<a href="http://www.ordos.gov.cn/hd_127898/szrx/ldgb/201911/t20191108_2521840.html?flowcode=http://www.ordos.gov.cn/gk_128120/shjz/yljz/201909/t20190905_2497574.html" class="searchresulttitle" target="_blank">四川省卫生健康委一行到鄂尔多斯市<font color=#FF0000>学习考察</font></a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2019-09-05&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "3"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">医疗救助</span>' +
+					'<a href="http://www.ordos.gov.cn/hd_127898/szxx/xjkd/201911/t20191111_2522669.html?flowcode=http://www.ordos.gov.cn/gk_128120/shjz/yljz/201909/t20190905_2497574.html" class="searchresulttitle" target="_blank">四川省卫生健康委一行到鄂尔多斯市<font color=#FF0000>学习考察</font></a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2019-09-05&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "4"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">医疗救助</span>' +
+					'<a href="http://zwfw.nmg.gov.cn/handle_affairs_detail?item_detail_id=http://www.ordos.gov.cn/gk_128120/shjz/yljz/201909/t20190905_2497574.html&regionCode=150600000000&record=istrue" class="searchresulttitle" target="_blank">四川省卫生健康委一行到鄂尔多斯市<font color=#FF0000>学习考察</font></a>' +
+					'</div>'+
+					'<div class="searchresultcon"><table class="zwfwtable" style="border-collapse: collapse;border:1px solid #ccc;width:100%;">'+
+					'<tr><td width="100" style="background-color:#fafafa;font-weight:bold;">在线办理</td><td width="200" style="text-align:left;"><a target="_blank" href="http://zwfw.nmg.gov.cn/handle_affairs_detail?item_detail_id=http://www.ordos.gov.cn/gk_128120/shjz/yljz/201909/t20190905_2497574.html&regionCode=150600000000&record=istrue">立即办理</a></td><td width="100" style="background-color:#fafafa;font-weight:bold;">在线咨询</td><td width="200" style="text-align:left;"><a target="_blank" href="http://zwfw.nmg.gov.cn/consulation?itemId=http://www.ordos.gov.cn/gk_128120/shjz/yljz/201909/t20190905_2497574.html&regionCode=150600000000">立即咨询</a></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">事项类型</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">服务对象</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">实施主体</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">咨询电话</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">所属盟市</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">行使层级</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">办理地点</td><td colspan="3" style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">摘 要</td><td colspan="3" style="text-align:left;">'+content+'...</td></tr>'+
+					'</table><br/>' +
+					'<span class="searchresultresource"> &nbsp;&nbsp;2019-09-05&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "5"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">医疗救助</span>' +
+					'<a href="http://www.ordos.gov.cn/gk_128120/shjz/yljz/201909/t20190905_2497574.html" class="searchresulttitle" target="_blank">四川省卫生健康委一行到鄂尔多斯市<font color=#FF0000>学习考察</font></a>' +
+					'</div>'+
+					'<div class="searchresultcon"><table class="zwfwtable" style="border-collapse: collapse;border:1px solid #ccc;width:100%;">'+
+					'<tr><td width="100" style="background-color:#fafafa;font-weight:bold;">文号</td><td width="200" style="text-align:left;"></td><td width="100" style="background-color:#fafafa;font-weight:bold;">发布机构</td><td width="200" style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">主题分类</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">公文时效</td><td style="text-align:left;">'+GWSX+'</td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">摘 要</td><td colspan="3" style="text-align:left;">'+content+'...</td></tr>'+
+					'</table><br/>' +
+					'<span class="searchresultresource">市人民政府办公室 &nbsp;&nbsp;2019-09-05&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "6"){
+				str = '<li style="margin-bottom:40px;font-size: 14px;">' +
+					'<div style="float:left;"><a target="_blank" href="http://www.ordos.gov.cn/gk_128120/shjz/yljz/201909/t20190905_2497574.html"><img width="130" src=""></a></div>'+
+					'<div style="float:left;margin-left:40px;width:610px;">'+
+					'<p style="margin:3px 0 13px 0;"><a class="leaderstyle" target="_blank" href="http://www.ordos.gov.cn/gk_128120/shjz/yljz/201909/t20190905_2497574.html">四川省卫生健康委一行到鄂尔多斯市学习考察</a></p>'+
+					'<p style="text-indent: 2rem;line-height:2;">9月5日，四川省卫生健康委一行6人到鄂尔多斯市<font color=#FF0000>学习考察</font>，自治区卫生健康委、市卫生健康委相关负责人及其他在家领导陪同考察。考察组通过查阅资料、实地查看、听取汇报的方式对鄂尔多斯市健康扶贫和民族卫生工作进行<font color=#FF0000>学习考察</font>。考察组实地走访了市蒙医医院，详...</p>'+
+					'<p><strong>分管工作：</strong></p>'+
+					'</div>'+
+					'<div class="clf"></div>'+
+					'</li>'
+					document.write(str);
+			}
+		</script>
+
+
+
+		<script>
+			var msgtype = "1";
+			var docNo = "http://www.ordos.gov.cn/gk_128120/shjz/yljz/201906/t20190627_2497323.html";
+			var REGION_CODE = "2497323";
+			var content = "6月25日上午，迁安市政协<font color=#FF0000>学习考察</font>团深入东胜区疾病预防控制中心观摩交流，区政协、卫健委相关领导陪同考察。东胜区疾病预防控制中心相关人员结合工作实际，就东胜区疾病预防控制中心近几年服务能力建设、...";
+			var source = ""
+			source = source.length>0 ? source : "鄂尔多斯市人民政府";
+			var GWSX = "";
+			GESX = GWSX == 1 ? "有效" : "有效";
+			var str = "";
+			if(msgtype == "1"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">医疗救助</span>' +
+					'<a href="http://www.ordos.gov.cn/gk_128120/shjz/yljz/201906/t20190627_2497323.html" class="searchresulttitle" target="_blank">迁安市政协<font color=#FF0000>学习考察</font>团莅临东胜区疾病预防控制中心观摩交流</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2019-06-27&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "2"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">医疗救助</span>' +
+					'<a href="http://www.ordos.gov.cn/hd_127898/szrx/ldgb/201911/t20191108_2521840.html?flowcode=http://www.ordos.gov.cn/gk_128120/shjz/yljz/201906/t20190627_2497323.html" class="searchresulttitle" target="_blank">迁安市政协<font color=#FF0000>学习考察</font>团莅临东胜区疾病预防控制中心观摩交流</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2019-06-27&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "3"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">医疗救助</span>' +
+					'<a href="http://www.ordos.gov.cn/hd_127898/szxx/xjkd/201911/t20191111_2522669.html?flowcode=http://www.ordos.gov.cn/gk_128120/shjz/yljz/201906/t20190627_2497323.html" class="searchresulttitle" target="_blank">迁安市政协<font color=#FF0000>学习考察</font>团莅临东胜区疾病预防控制中心观摩交流</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2019-06-27&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "4"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">医疗救助</span>' +
+					'<a href="http://zwfw.nmg.gov.cn/handle_affairs_detail?item_detail_id=http://www.ordos.gov.cn/gk_128120/shjz/yljz/201906/t20190627_2497323.html&regionCode=150600000000&record=istrue" class="searchresulttitle" target="_blank">迁安市政协<font color=#FF0000>学习考察</font>团莅临东胜区疾病预防控制中心观摩交流</a>' +
+					'</div>'+
+					'<div class="searchresultcon"><table class="zwfwtable" style="border-collapse: collapse;border:1px solid #ccc;width:100%;">'+
+					'<tr><td width="100" style="background-color:#fafafa;font-weight:bold;">在线办理</td><td width="200" style="text-align:left;"><a target="_blank" href="http://zwfw.nmg.gov.cn/handle_affairs_detail?item_detail_id=http://www.ordos.gov.cn/gk_128120/shjz/yljz/201906/t20190627_2497323.html&regionCode=150600000000&record=istrue">立即办理</a></td><td width="100" style="background-color:#fafafa;font-weight:bold;">在线咨询</td><td width="200" style="text-align:left;"><a target="_blank" href="http://zwfw.nmg.gov.cn/consulation?itemId=http://www.ordos.gov.cn/gk_128120/shjz/yljz/201906/t20190627_2497323.html&regionCode=150600000000">立即咨询</a></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">事项类型</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">服务对象</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">实施主体</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">咨询电话</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">所属盟市</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">行使层级</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">办理地点</td><td colspan="3" style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">摘 要</td><td colspan="3" style="text-align:left;">'+content+'...</td></tr>'+
+					'</table><br/>' +
+					'<span class="searchresultresource"> &nbsp;&nbsp;2019-06-27&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "5"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">医疗救助</span>' +
+					'<a href="http://www.ordos.gov.cn/gk_128120/shjz/yljz/201906/t20190627_2497323.html" class="searchresulttitle" target="_blank">迁安市政协<font color=#FF0000>学习考察</font>团莅临东胜区疾病预防控制中心观摩交流</a>' +
+					'</div>'+
+					'<div class="searchresultcon"><table class="zwfwtable" style="border-collapse: collapse;border:1px solid #ccc;width:100%;">'+
+					'<tr><td width="100" style="background-color:#fafafa;font-weight:bold;">文号</td><td width="200" style="text-align:left;"></td><td width="100" style="background-color:#fafafa;font-weight:bold;">发布机构</td><td width="200" style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">主题分类</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">公文时效</td><td style="text-align:left;">'+GWSX+'</td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">摘 要</td><td colspan="3" style="text-align:left;">'+content+'...</td></tr>'+
+					'</table><br/>' +
+					'<span class="searchresultresource">市人民政府办公室 &nbsp;&nbsp;2019-06-27&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "6"){
+				str = '<li style="margin-bottom:40px;font-size: 14px;">' +
+					'<div style="float:left;"><a target="_blank" href="http://www.ordos.gov.cn/gk_128120/shjz/yljz/201906/t20190627_2497323.html"><img width="130" src=""></a></div>'+
+					'<div style="float:left;margin-left:40px;width:610px;">'+
+					'<p style="margin:3px 0 13px 0;"><a class="leaderstyle" target="_blank" href="http://www.ordos.gov.cn/gk_128120/shjz/yljz/201906/t20190627_2497323.html">迁安市政协学习考察团莅临东胜区疾病预防控制中心观摩交流</a></p>'+
+					'<p style="text-indent: 2rem;line-height:2;">6月25日上午，迁安市政协<font color=#FF0000>学习考察</font>团深入东胜区疾病预防控制中心观摩交流，区政协、卫健委相关领导陪同考察。东胜区疾病预防控制中心相关人员结合工作实际，就东胜区疾病预防控制中心近几年服务能力建设、重大传染病防控、卫生防疫应急管理、实验室能力建设等...</p>'+
+					'<p><strong>分管工作：</strong></p>'+
+					'</div>'+
+					'<div class="clf"></div>'+
+					'</li>'
+					document.write(str);
+			}
+		</script>
+
+
+
+		<script>
+			var msgtype = "1";
+			var docNo = "http://www.ordos.gov.cn/gk_128120/gysy/201907/t20190716_2538081.html";
+			var REGION_CODE = "2538081";
+			var content = "2019年6月26日至6月30日，应蒙古国红十字会邀请，鄂尔多斯市红十字会党组书记、常务副会长闫美蓉一行三人访问了蒙古国，深入乌兰巴托市、达尔罕乌拉省交流<font color=#FF0000>学习考察</font>红十字工作。";
+			var source = "鄂尔多斯市红十字会"
+			source = source.length>0 ? source : "鄂尔多斯市人民政府";
+			var GWSX = "";
+			GESX = GWSX == 1 ? "有效" : "有效";
+			var str = "";
+			if(msgtype == "1"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">公益事业</span>' +
+					'<a href="http://www.ordos.gov.cn/gk_128120/gysy/201907/t20190716_2538081.html" class="searchresulttitle" target="_blank">鄂尔多斯市红十字会应邀<font color=#FF0000>学习考察</font>蒙古国红十字会工作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2019-07-16&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "2"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">公益事业</span>' +
+					'<a href="http://www.ordos.gov.cn/hd_127898/szrx/ldgb/201911/t20191108_2521840.html?flowcode=http://www.ordos.gov.cn/gk_128120/gysy/201907/t20190716_2538081.html" class="searchresulttitle" target="_blank">鄂尔多斯市红十字会应邀<font color=#FF0000>学习考察</font>蒙古国红十字会工作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2019-07-16&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "3"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">公益事业</span>' +
+					'<a href="http://www.ordos.gov.cn/hd_127898/szxx/xjkd/201911/t20191111_2522669.html?flowcode=http://www.ordos.gov.cn/gk_128120/gysy/201907/t20190716_2538081.html" class="searchresulttitle" target="_blank">鄂尔多斯市红十字会应邀<font color=#FF0000>学习考察</font>蒙古国红十字会工作</a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2019-07-16&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "4"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">公益事业</span>' +
+					'<a href="http://zwfw.nmg.gov.cn/handle_affairs_detail?item_detail_id=http://www.ordos.gov.cn/gk_128120/gysy/201907/t20190716_2538081.html&regionCode=150600000000&record=istrue" class="searchresulttitle" target="_blank">鄂尔多斯市红十字会应邀<font color=#FF0000>学习考察</font>蒙古国红十字会工作</a>' +
+					'</div>'+
+					'<div class="searchresultcon"><table class="zwfwtable" style="border-collapse: collapse;border:1px solid #ccc;width:100%;">'+
+					'<tr><td width="100" style="background-color:#fafafa;font-weight:bold;">在线办理</td><td width="200" style="text-align:left;"><a target="_blank" href="http://zwfw.nmg.gov.cn/handle_affairs_detail?item_detail_id=http://www.ordos.gov.cn/gk_128120/gysy/201907/t20190716_2538081.html&regionCode=150600000000&record=istrue">立即办理</a></td><td width="100" style="background-color:#fafafa;font-weight:bold;">在线咨询</td><td width="200" style="text-align:left;"><a target="_blank" href="http://zwfw.nmg.gov.cn/consulation?itemId=http://www.ordos.gov.cn/gk_128120/gysy/201907/t20190716_2538081.html&regionCode=150600000000">立即咨询</a></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">事项类型</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">服务对象</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">实施主体</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">咨询电话</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">所属盟市</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">行使层级</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">办理地点</td><td colspan="3" style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">摘 要</td><td colspan="3" style="text-align:left;">'+content+'...</td></tr>'+
+					'</table><br/>' +
+					'<span class="searchresultresource">鄂尔多斯市红十字会 &nbsp;&nbsp;2019-07-16&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "5"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">公益事业</span>' +
+					'<a href="http://www.ordos.gov.cn/gk_128120/gysy/201907/t20190716_2538081.html" class="searchresulttitle" target="_blank">鄂尔多斯市红十字会应邀<font color=#FF0000>学习考察</font>蒙古国红十字会工作</a>' +
+					'</div>'+
+					'<div class="searchresultcon"><table class="zwfwtable" style="border-collapse: collapse;border:1px solid #ccc;width:100%;">'+
+					'<tr><td width="100" style="background-color:#fafafa;font-weight:bold;">文号</td><td width="200" style="text-align:left;"></td><td width="100" style="background-color:#fafafa;font-weight:bold;">发布机构</td><td width="200" style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">主题分类</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">公文时效</td><td style="text-align:left;">'+GWSX+'</td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">摘 要</td><td colspan="3" style="text-align:left;">'+content+'...</td></tr>'+
+					'</table><br/>' +
+					'<span class="searchresultresource">市人民政府办公室 &nbsp;&nbsp;2019-07-16&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "6"){
+				str = '<li style="margin-bottom:40px;font-size: 14px;">' +
+					'<div style="float:left;"><a target="_blank" href="http://www.ordos.gov.cn/gk_128120/gysy/201907/t20190716_2538081.html"><img width="130" src=""></a></div>'+
+					'<div style="float:left;margin-left:40px;width:610px;">'+
+					'<p style="margin:3px 0 13px 0;"><a class="leaderstyle" target="_blank" href="http://www.ordos.gov.cn/gk_128120/gysy/201907/t20190716_2538081.html">鄂尔多斯市红十字会应邀学习考察蒙古国红十字会工作</a></p>'+
+					'<p style="text-indent: 2rem;line-height:2;">2019年6月26日至6月30日，应蒙古国红十字会邀请，鄂尔多斯市红十字会党组书记、常务副会长闫美蓉一行三人访问了蒙古国，深入乌兰巴托市、达尔罕乌拉省交流<font color=#FF0000>学习考察</font>红十字工作。</p>'+
+					'<p><strong>分管工作：</strong></p>'+
+					'</div>'+
+					'<div class="clf"></div>'+
+					'</li>'
+					document.write(str);
+			}
+		</script>
+
+
+
+		<script>
+			var msgtype = "1";
+			var docNo = "http://www.ordos.gov.cn/gk_128120/gysy/201907/t20190726_2538083.html";
+			var REGION_CODE = "2538083";
+			var content = "　　7月18日至20日，为扎实推进“不忘初心、牢记使命”主题教育，深入贯彻自治区党委、市委关于“大学习大讨论”的有关要求，市红十字会党组书记、常务副会长闫美蓉带领全市各旗区红十字会常务副...";
+			var source = "鄂尔多斯市红十字会"
+			source = source.length>0 ? source : "鄂尔多斯市人民政府";
+			var GWSX = "";
+			GESX = GWSX == 1 ? "有效" : "有效";
+			var str = "";
+			if(msgtype == "1"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">公益事业</span>' +
+					'<a href="http://www.ordos.gov.cn/gk_128120/gysy/201907/t20190726_2538083.html" class="searchresulttitle" target="_blank">鄂尔多斯市红十字会系统赴巴彦淖尔市和榆林市<font color=#FF0000>学习考察</font></a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2019-07-26&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "2"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">公益事业</span>' +
+					'<a href="http://www.ordos.gov.cn/hd_127898/szrx/ldgb/201911/t20191108_2521840.html?flowcode=http://www.ordos.gov.cn/gk_128120/gysy/201907/t20190726_2538083.html" class="searchresulttitle" target="_blank">鄂尔多斯市红十字会系统赴巴彦淖尔市和榆林市<font color=#FF0000>学习考察</font></a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2019-07-26&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "3"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">公益事业</span>' +
+					'<a href="http://www.ordos.gov.cn/hd_127898/szxx/xjkd/201911/t20191111_2522669.html?flowcode=http://www.ordos.gov.cn/gk_128120/gysy/201907/t20190726_2538083.html" class="searchresulttitle" target="_blank">鄂尔多斯市红十字会系统赴巴彦淖尔市和榆林市<font color=#FF0000>学习考察</font></a>' +
+					'</div><div class="searchresultcon">'+content+'...<br/>' +
+					'<span class="searchresultresource">'+source+' &nbsp;&nbsp;2019-07-26&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "4"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">公益事业</span>' +
+					'<a href="http://zwfw.nmg.gov.cn/handle_affairs_detail?item_detail_id=http://www.ordos.gov.cn/gk_128120/gysy/201907/t20190726_2538083.html&regionCode=150600000000&record=istrue" class="searchresulttitle" target="_blank">鄂尔多斯市红十字会系统赴巴彦淖尔市和榆林市<font color=#FF0000>学习考察</font></a>' +
+					'</div>'+
+					'<div class="searchresultcon"><table class="zwfwtable" style="border-collapse: collapse;border:1px solid #ccc;width:100%;">'+
+					'<tr><td width="100" style="background-color:#fafafa;font-weight:bold;">在线办理</td><td width="200" style="text-align:left;"><a target="_blank" href="http://zwfw.nmg.gov.cn/handle_affairs_detail?item_detail_id=http://www.ordos.gov.cn/gk_128120/gysy/201907/t20190726_2538083.html&regionCode=150600000000&record=istrue">立即办理</a></td><td width="100" style="background-color:#fafafa;font-weight:bold;">在线咨询</td><td width="200" style="text-align:left;"><a target="_blank" href="http://zwfw.nmg.gov.cn/consulation?itemId=http://www.ordos.gov.cn/gk_128120/gysy/201907/t20190726_2538083.html&regionCode=150600000000">立即咨询</a></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">事项类型</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">服务对象</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">实施主体</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">咨询电话</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">所属盟市</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">行使层级</td><td style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">办理地点</td><td colspan="3" style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">摘 要</td><td colspan="3" style="text-align:left;">'+content+'...</td></tr>'+
+					'</table><br/>' +
+					'<span class="searchresultresource">鄂尔多斯市红十字会 &nbsp;&nbsp;2019-07-26&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "5"){
+				str = '<li style="margin-bottom:40px;text-align: left;">' +
+					'<div style="margin-bottom:20px;">' +
+					'<span class="tag">公益事业</span>' +
+					'<a href="http://www.ordos.gov.cn/gk_128120/gysy/201907/t20190726_2538083.html" class="searchresulttitle" target="_blank">鄂尔多斯市红十字会系统赴巴彦淖尔市和榆林市<font color=#FF0000>学习考察</font></a>' +
+					'</div>'+
+					'<div class="searchresultcon"><table class="zwfwtable" style="border-collapse: collapse;border:1px solid #ccc;width:100%;">'+
+					'<tr><td width="100" style="background-color:#fafafa;font-weight:bold;">文号</td><td width="200" style="text-align:left;"></td><td width="100" style="background-color:#fafafa;font-weight:bold;">发布机构</td><td width="200" style="text-align:left;"></td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">主题分类</td><td style="text-align:left;"></td><td style="background-color:#fafafa;font-weight:bold;">公文时效</td><td style="text-align:left;">'+GWSX+'</td></tr>'+
+					'<tr><td style="background-color:#fafafa;font-weight:bold;">摘 要</td><td colspan="3" style="text-align:left;">'+content+'...</td></tr>'+
+					'</table><br/>' +
+					'<span class="searchresultresource">市人民政府办公室 &nbsp;&nbsp;2019-07-26&nbsp;&nbsp;</span>' +
+					'</div>' +
+					'</li>'
+					document.write(str);
+			}
+			if(msgtype == "6"){
+				str = '<li style="margin-bottom:40px;font-size: 14px;">' +
+					'<div style="float:left;"><a target="_blank" href="http://www.ordos.gov.cn/gk_128120/gysy/201907/t20190726_2538083.html"><img width="130" src=""></a></div>'+
+					'<div style="float:left;margin-left:40px;width:610px;">'+
+					'<p style="margin:3px 0 13px 0;"><a class="leaderstyle" target="_blank" href="http://www.ordos.gov.cn/gk_128120/gysy/201907/t20190726_2538083.html">鄂尔多斯市红十字会系统赴巴彦淖尔市和榆林市学习考察</a></p>'+
+					'<p style="text-indent: 2rem;line-height:2;">　　7月18日至20日，为扎实推进“不忘初心、牢记使命”主题教育，深入贯彻自治区党委、市委关于“大学习大讨论”的有关要求，市红十字会党组书记、常务副会长闫美蓉带领全市各旗区红十字会常务副会长、副会长赴巴彦淖尔市和陕西省榆林市分别对博爱家...</p>'+
+					'<p><strong>分管工作：</strong></p>'+
+					'</div>'+
+					'<div class="clf"></div>'+
+					'</li>'
+					document.write(str);
+			}
+		</script>
+
+
+</ol>
+<div style="max-width: 100%;" id="outlinebar"><font style="float:left;color:#606266;">共&nbsp;69&nbsp;条&emsp;</font><span style="font-weight: bold;border: none;background: none">1</span>&nbsp;<a target="_self" href="search?page=2&channelid=297461&searchword=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F&keyword=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F&was_custom_expr=%28%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%29&perpage=10&outlinepage=10&searchscope=&SOURCEDB=&timescope=&timescopedate=&timescopenow=&timescopecolumn=&orderby=RELEVANCE&andsen=&total=&orsen=&exclude=">2</a>&nbsp;<a target="_self" href="search?page=3&channelid=297461&searchword=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F&keyword=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F&was_custom_expr=%28%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%29&perpage=10&outlinepage=10&searchscope=&SOURCEDB=&timescope=&timescopedate=&timescopenow=&timescopecolumn=&orderby=RELEVANCE&andsen=&total=&orsen=&exclude=">3</a>&nbsp;<a target="_self" href="search?page=4&channelid=297461&searchword=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F&keyword=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F&was_custom_expr=%28%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%29&perpage=10&outlinepage=10&searchscope=&SOURCEDB=&timescope=&timescopedate=&timescopenow=&timescopecolumn=&orderby=RELEVANCE&andsen=&total=&orsen=&exclude=">4</a>&nbsp;<a target="_self" href="search?page=5&channelid=297461&searchword=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F&keyword=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F&was_custom_expr=%28%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%29&perpage=10&outlinepage=10&searchscope=&SOURCEDB=&timescope=&timescopedate=&timescopenow=&timescopecolumn=&orderby=RELEVANCE&andsen=&total=&orsen=&exclude=">5</a>&nbsp;<a target="_self" href="search?page=6&channelid=297461&searchword=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F&keyword=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F&was_custom_expr=%28%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%29&perpage=10&outlinepage=10&searchscope=&SOURCEDB=&timescope=&timescopedate=&timescopenow=&timescopecolumn=&orderby=RELEVANCE&andsen=&total=&orsen=&exclude=">6</a>&nbsp;<a target="_self" href="search?page=7&channelid=297461&searchword=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F&keyword=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F&was_custom_expr=%28%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%29&perpage=10&outlinepage=10&searchscope=&SOURCEDB=&timescope=&timescopedate=&timescopenow=&timescopecolumn=&orderby=RELEVANCE&andsen=&total=&orsen=&exclude=">7</a>&nbsp;<a class="next-page" href="search?page=2&channelid=297461&searchword=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F&keyword=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F&was_custom_expr=%28%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%29&perpage=10&outlinepage=10&searchscope=&SOURCEDB=&timescope=&timescopedate=&timescopenow=&timescopecolumn=&orderby=RELEVANCE&andsen=&total=&orsen=&exclude=" target="_self">下一页</a>&nbsp;<a class="last-page" href="search?page=7&channelid=297461&searchword=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F&keyword=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F&was_custom_expr=%28%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%29&perpage=10&outlinepage=10&searchscope=&SOURCEDB=&timescope=&timescopedate=&timescopenow=&timescopecolumn=&orderby=RELEVANCE&andsen=&total=&orsen=&exclude=" target="_self">尾页</a>&nbsp;</div>
+
+
+        <form action="search" method="get" style="vertical-align: bottom" name="outlinesearchform">
+				<input type="hidden" name="searchscope" value="">
+				<input type="hidden" name="timescope" value="">
+				<input type="hidden" name="timescopedate" value="">
+				<input type="hidden" name="timescopenow" value="">
+				<input type="hidden" name="timescopecolumn" value="">
+				<input type="hidden" name="orderby" value="RELEVANCE">
+				<input type="hidden" name="channelid" value="297461">
+				<input type="hidden" name="SOURCEDB" value="" />
+				<input type="hidden" name="andsen" value="" />
+				<input type="hidden" name="total" value="" />
+				<input type="hidden" name="orsen" value="" />
+				<input type="hidden" name="exclude" value="" />
+				<input name="searchword" type="hidden" class="forminputshort" value="学习考察"/>
+				<input type="hidden" name="perpage" value="">
+				<input type="hidden" name="templet" value="">
+				<input type="hidden" name="token" value="">
+		</form>
+
+</td>
+</tr>
+</table>
+	<script type="text/javascript">
+		var searchScope = '';
+		var timeScope = '';
+		var orderBy = 'RELEVANCE';
+		var sourcedb = '';
+		console.log(searchScope);
+		if(sourcedb == ''){
+			document.getElementById("lelele").className="searchactive" ;
+		}
+		else if(sourcedb == '1'){
+			document.getElementById("XWYW").className="searchactive" ;
+		}
+		else if(sourcedb == '5'){
+			document.getElementById("ZCWJ").className="searchactive" ;
+		}
+		else if(sourcedb == '4'){
+			document.getElementById("BSFW").className="searchactive" ;
+		}
+		else if(sourcedb == '2'){
+			document.getElementById("HDJL").className="searchactive" ;
+		}
+		if(searchScope==''){
+			document.getElementById("tdscopenolimit").className="searchtoolsactive" ;
+		}
+		else if(searchScope=='TITLE'){
+			document.getElementById("tdscopetitle").className="searchtoolsactive" ;
+		}
+		else if(searchScope=='SEARCHCONTENT'){
+			document.getElementById("tdscopecontent").className="searchtoolsactive" ;
+		}
+
+		if(timeScope==''){
+			document.getElementById("tdtimenolimit").className="searchtoolsactive" ;
+		}
+		else if(timeScope=='date'){
+			document.getElementById("tdtime1day").className="searchtoolsactive" ;
+		}
+		else if(timeScope=='week'){
+			document.getElementById("tdtime7days").className="searchtoolsactive" ;
+		}
+		else if(timeScope=='month'){
+			document.getElementById("tdtime30days").className="searchtoolsactive" ;
+		}
+		else if(timeScope=='year'){
+			document.getElementById("tdtime365days").className="searchtoolsactive" ;
+		}
+		if(orderBy=='RELEVANCE' || orderBy==''){
+			document.getElementById("tdsortrelevance").className="searchtoolsactive" ;
+		}
+		else if(orderBy=='-DOCRELTIME'){
+			document.getElementById("tdsorttime-").className="searchtoolsactive" ;
+		}
+		else if(orderBy=='+DOCRELTIME'){
+			document.getElementById("tdsorttime+").className="searchtoolsactive" ;
+		}
+	</script>
+	</div>
+	</div>
+	<div class="search_box_right mobile">
+		<div class="l_rcss_box" style="">
+			<div style="width:100%;height:32px;border-bottom:1px solid #ebecee;line-height:32px;font-size:18px;font-weight:bold;color:#3c4455;margin:15px 0 15px 0;">
+				热搜资源
+			</div>
+			<div>
+
+				<ul style="list-style:none;padding:0;">
+
+						<li class="rank" style="margin-bottom:20px;">
+							<span style="display:inline-block;width:18px;height:18px;text-align:center;line-height:18px;color:white;margin-right:16px;">
+								1
+							</span>
+							<a style="color:#888c94;font-size:14px;" href="search?channelid=297461&searchword=%E7%96%AB%E6%83%85%E9%98%B2%E6%8E%A7">疫情防控</a>
+						</li>
+
+						<li class="rank" style="margin-bottom:20px;">
+							<span style="display:inline-block;width:18px;height:18px;text-align:center;line-height:18px;color:white;margin-right:16px;">
+								2
+							</span>
+							<a style="color:#888c94;font-size:14px;" href="search?channelid=297461&searchword=%E6%A0%B8%E9%85%B8%E6%A3%80%E6%B5%8B">核酸检测</a>
+						</li>
+
+						<li class="rank" style="margin-bottom:20px;">
+							<span style="display:inline-block;width:18px;height:18px;text-align:center;line-height:18px;color:white;margin-right:16px;">
+								3
+							</span>
+							<a style="color:#888c94;font-size:14px;" href="search?channelid=297461&searchword=%E5%B0%B1%E4%B8%9A%E5%88%9B%E4%B8%9A">就业创业</a>
+						</li>
+
+						<li class="rank" style="margin-bottom:20px;">
+							<span style="display:inline-block;width:18px;height:18px;text-align:center;line-height:18px;color:white;margin-right:16px;">
+								4
+							</span>
+							<a style="color:#888c94;font-size:14px;" href="search?channelid=297461&searchword=%E8%B4%B7%E6%AC%BE">贷款</a>
+						</li>
+
+						<li class="rank" style="margin-bottom:20px;">
+							<span style="display:inline-block;width:18px;height:18px;text-align:center;line-height:18px;color:white;margin-right:16px;">
+								5
+							</span>
+							<a style="color:#888c94;font-size:14px;" href="search?channelid=297461&searchword=%E4%BD%8F%E6%88%BF">住房</a>
+						</li>
+
+						<li class="rank" style="margin-bottom:20px;">
+							<span style="display:inline-block;width:18px;height:18px;text-align:center;line-height:18px;color:white;margin-right:16px;">
+								6
+							</span>
+							<a style="color:#888c94;font-size:14px;" href="search?channelid=297461&searchword=%E6%95%99%E8%82%B2%E5%9F%B9%E8%AE%AD">教育培训</a>
+						</li>
+
+						<li class="rank" style="margin-bottom:20px;">
+							<span style="display:inline-block;width:18px;height:18px;text-align:center;line-height:18px;color:white;margin-right:16px;">
+								7
+							</span>
+							<a style="color:#888c94;font-size:14px;" href="search?channelid=297461&searchword=%E5%85%AC%E7%A7%AF%E9%87%91">公积金</a>
+						</li>
+
+						<li class="rank" style="margin-bottom:20px;">
+							<span style="display:inline-block;width:18px;height:18px;text-align:center;line-height:18px;color:white;margin-right:16px;">
+								8
+							</span>
+							<a style="color:#888c94;font-size:14px;" href="search?channelid=297461&searchword=%E5%8C%BB%E7%96%97%E4%BF%9D%E9%99%A9">医疗保险</a>
+						</li>
+
+				</ul>
+				<script>
+					$(".rank").each(function(){
+						if($(this).find("span").text() == 1){
+							$(this).find("span").css("background-color","#ff3941")
+						}
+						if($(this).find("span").text() == 2){
+							$(this).find("span").css("background-color","#ff7e47")
+						}
+						if($(this).find("span").text() == 3){
+							$(this).find("span").css("background-color","#ffac49")
+						}
+						if($(this).find("span").text() > 3){
+							$(this).find("span").css("background-color","#87b9f2")
+						}
+					});
+
+				</script>
+			</div>
+			<div style="width:100%;height:32px;border-bottom:1px solid #ebecee;line-height:32px;font-size:18px;font-weight:bold;color:#3c4455;margin:15px 0 15px 0;">
+				相关搜索
+			</div>
+			<div style="width:100%">
+
+                    <table class="l_table2" height="60px" cellSpacing=0 cellPadding=0 border=0>
+                        <tr>
+
+                                <th style="color:#666;font-weight:normal;height:20px;padding: 2px 5px 2px 5px;FONT-SIZE: 15px;border: 1px solid #e6e6e6;" align="center">
+                                    <a href="search?&channelid=297461&searchword=%E5%AD%A6%E4%B9%A0&keyword=%E5%AD%A6%E4%B9%A0">学习</a>
+                                </th>
+                                <td width="4%"></td>
+
+                                <th style="color:#666;font-weight:normal;height:20px;padding: 2px 5px 2px 5px;FONT-SIZE: 15px;border: 1px solid #e6e6e6;" align="center">
+                                    <a href="search?&channelid=297461&searchword=%E8%80%83%E5%AF%9F&keyword=%E8%80%83%E5%AF%9F">考察</a>
+                                </th>
+                                <td width="4%"></td>
+
+                                <th style="color:#666;font-weight:normal;height:20px;padding: 2px 5px 2px 5px;FONT-SIZE: 15px;border: 1px solid #e6e6e6;" align="center">
+                                    <a href="search?&channelid=297461&searchword=%E7%9A%84%E5%AD%A6%E4%B9%A0&keyword=%E7%9A%84%E5%AD%A6%E4%B9%A0">的学习</a>
+                                </th>
+                                <td width="4%"></td>
+
+                        </tr>
+						<tr height="10px"></tr>
+                        <tr>
+
+                                <th style="color:#666;font-weight:normal;height:20px;padding: 2px 5px 2px 5px;FONT-SIZE: 15px;border: 1px solid #e6e6e6;" align="center">
+                                    <a href="search?&channelid=297461&searchword=%E5%AD%A6%E4%B9%A0%E8%B4%AF%E5%BD%BB&keyword=%E5%AD%A6%E4%B9%A0%E8%B4%AF%E5%BD%BB">学习贯彻</a>
+                                </th>
+                                <td width="10px"></td>
+
+                                <th style="color:#666;font-weight:normal;height:20px;padding: 2px 5px 2px 5px;FONT-SIZE: 15px;border: 1px solid #e6e6e6;" align="center">
+                                    <a href="search?&channelid=297461&searchword=%E5%AD%A6%E4%B9%A0%E4%BA%86&keyword=%E5%AD%A6%E4%B9%A0%E4%BA%86">学习了</a>
+                                </th>
+                                <td width="10px"></td>
+
+                                <th style="color:#666;font-weight:normal;height:20px;padding: 2px 5px 2px 5px;FONT-SIZE: 15px;border: 1px solid #e6e6e6;" align="center">
+                                    <a href="search?&channelid=297461&searchword=%E5%AD%A6%E4%B9%A0%E8%83%BD%E5%8A%9B&keyword=%E5%AD%A6%E4%B9%A0%E8%83%BD%E5%8A%9B">学习能力</a>
+                                </th>
+                                <td width="10px"></td>
+
+                        </tr>
+                    </table>
+
+            </div>
+
+
+
+
+
+
+		</div>
+	</div>
+	<div class="clf"></div>
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+//jQuery(document).ready(function() {
+//	$.ajax({
+//        type: "POST",
+//        url: "classresult",
+//        data: "showother=true&showtype=txt&classnum=5&classcol=" + "&channelid=297461&searchword=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F&keyword=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F&was_custom_expr=%28%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%29",
+//        success: function(data, textStatus)
+//        {
+//        	$("#loading").remove();
+//        	$("#showcr").show();
+//        	var items = data.split("#");
+//        	if (items.length == 0) return;
+//
+//        	for (var i = 0; i < items.length; i++)
+//        	{
+//	        	$("#classresult").append("<a id="+i+">" + items[i] + "</a>");
+//        	}
+//        },
+//        error:function (XMLHttpRequest, textStatus, errorThrown)
+//        {
+//		}
+//    });
+//});
+function changeType(showtype)
+{
+ 	if(showtype == "pic")
+ 	{
+ 	 	$("#div_text").hide();
+ 	 	$("#div_pic").show();
+ 	}
+ 	else
+ 	{
+ 	 	$("#div_text").show();
+ 	 	$("#div_pic").hide();
+ 	}
+}
+$(document).ready(function(){
+	$(".searchtoolsactive").each(function(){
+		$(this).parents(".hide_box").prev(".search_criteria").find(".fead").text($(this).text());
+	})
+})
+</script>
+<iframe src="http://www.ordos.gov.cn/qt/dbqt/" width="100%" height="180px" frameborder="0"></iframe>
+</body>
+</html>
