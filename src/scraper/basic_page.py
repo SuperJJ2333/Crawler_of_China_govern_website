@@ -29,7 +29,7 @@ logger.add(
     filter=lambda record: record["level"].name == "WARNING"
 )
 
-# 为 WARNING 级别设置格式
+# 为 ERROR 级别设置格式
 logger.add(
     sys.stderr,
     format="<red>{time:YYYY-MM-DD HH:mm:ss} - {level} - {message}</red>",
@@ -149,7 +149,7 @@ class PageMother:
         for data in self.total_news_data:
             # 合并 content 列表中的所有文本
             full_content = ' '.join(data['content'])  # 将列表转换为单个字符串
-            first_30_chars = full_content[:50]  # 提取前50个字符
+            first_30_chars = full_content[:200]  # 提取前200个字符
 
             # 使用前30个字符作为字典键来筛选和存储最优数据
             if first_30_chars in best_data:

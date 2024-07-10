@@ -76,7 +76,7 @@ def fetch_page_content(page, url, title):
     unique_texts = set()
     texts = []
 
-    page.wait(1, 3)  # 等待页面加载完成
+    page.wait(2, 5)  # 等待页面加载完成
 
     # 尝试获取页面的所有元素
     try:
@@ -134,7 +134,7 @@ def fetch_page_content(page, url, title):
             if text == '' or len(text) < 30:
                 logger.debug(f"过滤空白或较短文本 - '{text}' - {title} - {url}")
                 continue
-            elif text.count('\n') >= 8 or text.count('\t') >= 8:
+            elif (text.count('\n') >= 8 or text.count('\t') >= 8) and len(text) < 75:
                 logger.debug(f"过滤过长的空白 - '{text}' - {title} - {url}")
                 continue
             else:
@@ -179,8 +179,12 @@ def fetch_page_content(page, url, title):
                     if rule_1 or rule_2 or rule_3:
                         texts.append(cleaned_text)
                         logger.debug(f"添加有效文本 - '{cleaned_text}' - {title} - {url}")
+                    else:
+                        logger.debug(f"长度不符合要求 - '{text}' - {title} - {url}")
+                else:
+                    logger.debug(f"包含过多重复关键词 - '{text}' - {title} - {url}")
             else:
-                logger.debug(f"过滤无关文本 - '{text}' - {title} - {url}")
+                logger.debug(f"包含非关键词 - '{text}' - {title} - {url}")
         except Exception as e:
             logger.debug(f"遍历元素时出现问题 - {e}")
             continue
@@ -208,7 +212,7 @@ def is_content_valuable(news, page):
         return None
 
     if not texts:
-        logger.warning(f"无内容可抓取 - {news['topic']} - {news['url']}")
+        logger.error(f"无内容可抓取 - {news['topic']} - {news['url']}")
         return None
 
     # 判断标题是否含有关键词

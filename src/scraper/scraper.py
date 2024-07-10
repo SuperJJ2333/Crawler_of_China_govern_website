@@ -177,6 +177,7 @@ class Scraper(PageMother):
         self.logger.info(f"{self.city_name} - URL: {url}")
 
         session.get(url=url, proxies=self.proxies, **self.params, timeout=30)
+        # session = requests.get(url=url, proxies=self.proxies, **self.params, timeout=30)
         time.sleep(random.randrange(1, 2))
 
         return session
@@ -267,7 +268,7 @@ class Scraper(PageMother):
 
         page = self.page
 
-        news_list = None
+        news_list = []
 
         if self.data_type.upper() == 'JSON':
             page.listen.start(self.listen_name)
@@ -280,12 +281,18 @@ class Scraper(PageMother):
 
             if self.data_type.upper() == 'JSON':
                 page.wait(2, 3)
-                # 等待新闻列表数据返回
-                res = page.listen.wait()
 
-                json_data = res.response.body
+                while True:
 
-                news_list = self.parse_json(json_data)
+                    res = page.listen.wait()
+
+                    json_data = res.response.body
+
+                    extracted_data = self.parse_json(json_data)
+
+                    if len(extracted_data) > 0:
+                        news_list.extend(extracted_data)
+                        break
 
             elif self.data_type.upper() == 'HTML':
                 news_list = self.parse_html(page)
@@ -309,7 +316,6 @@ class Scraper(PageMother):
             except Exception as e:
                 self.logger.success(f"{self.city_name} - 解析完成，无下一页按钮")
                 break
-
 
     def parse_json(self, session):
         """
@@ -405,7 +411,7 @@ class Scraper(PageMother):
             # title_url = title_url.group(1) if title_url else None
             # date = date.group(1) if date else None
 
-            if title and date:
+            if title_url:
                 news_dict = {'province': self.province_name, 'city': self.city_name,
                              'topic': title, 'date': date, 'url': title_url}
 

@@ -45,9 +45,9 @@ if __name__ == '__main__':
         'province_name': '河南省',
         'province': 'Henan',
 
-        'base_url': 'https://searchapi.anyang.gov.cn/open/api/external?keywords=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F+%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&siteId=4550000372&allKeyword=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F+%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&anyKeyword=&noKeyword=&searchRange=1&sortType=200&beginTime=&endTime=&pageNumber={page_num}&pageSize=15&fileType=0&docType=0',
+        'base_url': 'https://searchapi.anyang.gov.cn/open/api/external?keywords=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%2B%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&siteId=4550000372&allKeyword=&anyKeyword=&noKeyword=&searchRange=1&sortType=150&beginTime=&endTime=&pageNumber={page_num}&pageSize=15&fileType=0&docType=0',
 
-        'total_news_num': 7778,
+        'total_news_num': 7823,
         'each_page_news_num': 15,
     }
 

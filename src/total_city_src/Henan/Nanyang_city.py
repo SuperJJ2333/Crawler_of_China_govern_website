@@ -41,13 +41,13 @@ if __name__ == '__main__':
     """
 
     city_info = {
-        'city_name': '安阳市',
+        'city_name': '南阳市',
         'province_name': '河南省',
         'province': 'Henan',
 
         'base_url': 'https://t.nanyang.gov.cn/search-api/open/api/external?keywords=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F+%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&siteId=4113000002&allKeyword=&anyKeyword=&noKeyword=&searchRange=1&sortType=150&beginTime=&endTime=&pageNumber={page_num}&pageSize=15&fileType=0&docType=0',
 
-        'total_news_num': 1619,
+        'total_news_num': 1622,
         'each_page_news_num': 15,
     }
 
