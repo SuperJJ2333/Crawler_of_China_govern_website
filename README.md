@@ -5,25 +5,26 @@
 该项目旨在爬取中国大陆政府官方网站的数据，包括政府公告、新闻和其他相关信息，并将其整合存储以便于数据分析和使用。
 
 # 项目结构
+```
 Crawler_of_China_govern_website/
 │
 ├── .idea/
 ├── output/
 │     ├──Total_time_range_data (全部地级市的全部时间段数据)
 │     ├──Certain_time_range_data (特定地级市的特定时间段数据)
-│     ├──province_web_src (各省份的省级政府网站的全部时间段数据)
+│     ├──province_web_src (各省份和直辖市的政府网站的全部时间段数据)
 │     
 ├── src/
-│     ├── spider (爬虫程序)
+│     ├── spider (爬虫类)
 │     ├── common (常用工具类)
-│     ├── certain_city_src (特定地级市的特定时间段数据的爬取入口)
-│     ├── province_web_src (省级政府网站的爬取入口)
-│     ├── total_city_src (全部地级市的全部时间段数据的爬取入口)
+│     ├── certain_city_src (特定地级市的特定时间段数据的爬取入口代码)
+│     ├── province_web_src (各省份和直辖市政府网站的爬取入口代码)
+│     ├── total_city_src (全部地级市的全部时间段数据的爬取入口代码)
 │     ├── requirements.txt (依赖包)
 ├── .gitignore
 ├── LICENSE
 └── README.md
-
+```
 
 # 爬取内容
 
