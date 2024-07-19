@@ -30,7 +30,7 @@ def save_to_excel(unique_news, name, province):
         os.makedirs(os.path.join(current_dir, f'../../output/{province}'))  # 如果输出目录不存在，创建它
 
     # 构造文件完整路径
-    filename = os.path.join(current_dir, f'../../output/{province}', f'{name}_news.xlsx')
+    filename = os.path.join(current_dir, f'../../output/{province}', f'{name}_学习考察.xlsx')
 
     # 保存到Excel，不包含索引
     df.to_excel(filename, index=False)
@@ -39,15 +39,16 @@ def save_to_excel(unique_news, name, province):
     logger.info(f"文件已保存至: {filename}")
 
 
-def remove_duplicates(news_data):
+def remove_duplicates(news_data, unique_news):
     """
     去除新闻数据中的重复条目，基于标题和日期。
     参数:
     news_data -- 新闻数据列表，每个元素是一个字典，包含'url', 'topic', 'date'等键。
+    unique_news -- 用于存储已见过的(topic, date, url)元组的集合。
     返回:
     无重复的新闻数据列表。
     """
-    seen = set()  # 用于存储已见过的(topic, date)元组
+    seen = unique_news  # 用于存储已见过的(topic, date)元组
     unique_news = []
 
     for news in news_data:
@@ -89,6 +90,7 @@ def clean_news_data(news):
     if 'url' in news and news['url'] is not None:  # 清洗url，只保留域名部分
         news['url'] = format_url(news['url'])
     else:
+        # pass
         logger.warning(f"新闻数据中缺少'url'字段: {news}")
     return news
 
@@ -156,14 +158,16 @@ def format_date(date_str):
 
 def format_url(url_str):
     url_match = re.search(r"geturl\('(.*?)'", url_str)
+    url_match_v2 = re.search(r"'([^']+)'", url_str)
     if url_match:
         url = url_match.group(1)
+    elif url_match_v2:
+        url = url_match_v2.group(1)
     else:
         url = url_str
 
-    if url.startswith('http') or url.startswith('https'):
-        url = url_str
-    else:
+    if not url.startswith('http'):
+        logger.warning(f"URL格式不正确: {url}")
         url = ''
 
     return url
@@ -197,6 +201,14 @@ def set_nested_value(dic, path, value):
        :param path: 表示目标位置路径的字符串或键的列表，字符串路径各部分由点分隔。
        :param value: 在目标位置设置的值。
    """
+    if 'params' in dic:
+        dic = set_nested_value_by_list(dic, path, value)
+        return dic
+
+    if '__EVENTARGUMENT' in dic:
+        dic[path] = f'Page${value}'
+        return dic
+
     if isinstance(dic, str):
         parsed_query = parse.parse_qs(dic)
 
@@ -207,10 +219,6 @@ def set_nested_value(dic, path, value):
         updated_query_string = parse.urlencode(parsed_query, doseq=True)
 
         return updated_query_string
-
-    if 'params' in dic:
-        dic = set_nested_value_by_list(dic, path, value)
-        return dic
 
     if isinstance(path, list):
         # 如果路径是列表，为每个键设置相同的值

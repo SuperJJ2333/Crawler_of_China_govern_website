@@ -6,7 +6,8 @@ import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import requests
-from DrissionPage import SessionPage
+from DrissionPage import SessionPage, ChromiumPage
+from DrissionPage._elements.session_element import make_session_ele
 
 from common.content_utils import process_news_content
 from common.form_utils import set_nested_value, format_date, clean_news_data, remove_duplicates, is_json
@@ -43,6 +44,7 @@ class Scraper(PageMother):
         """
         super().__init__(city_info, content_xpath, is_headless, thread_num, proxies)
 
+
         self.method = method
         self.data_type = data_type
 
@@ -54,6 +56,7 @@ class Scraper(PageMother):
         self.page_num_start = kwargs.pop('page_num_start', 1)
         # 用于指定爬取的页数间隔
         self.num_added_each_time = kwargs.pop('num_added_each_time', 1)
+        # 用于post
         self.post_data = kwargs.pop('post_data', '')
         self.page_num_name = kwargs.pop('page_num_name', None)
 
@@ -65,10 +68,18 @@ class Scraper(PageMother):
 
         self.is_post_by_json = kwargs.pop('is_post_by_json', False)
 
+        self.is_by_requests = kwargs.pop('is_by_requests', False)
+
         # 用于判断是否停止爬取
         self.is_stop = False
+        self.is_stop_search = False
         # 用于记录爬取到的内容全部为None的新闻数量
         self.null_news_num = 0
+        # 用于记录爬取到的内容全部为None的新闻列表数量
+        self.null_news_list_num = 0
+
+        # 设置遇到第几次空数据后，什么时候停止爬取
+        self.max_null_news_num = 50
 
         self.logger.info(f"{self.city_name} - 开始爬取数据 - 爬取方法为{self.method.upper()} - 数据类型为{self.data_type.upper()}")
 
@@ -86,7 +97,10 @@ class Scraper(PageMother):
         with ThreadPoolExecutor(max_workers=self.thread_num) as executor:
             futures = []
             for i in range(self.total_page_num):
-                if self.is_stop:
+                if self.is_stop_search:
+                    # 取消尚未开始的任务
+                    for future in futures:
+                        future.cancel()
                     break  # 提前终止提交新任务
 
                 current_page_num = self.page_num_start + i * self.num_added_each_time
@@ -94,18 +108,11 @@ class Scraper(PageMother):
                 futures.append(future)
 
             for future in as_completed(futures):
+                if future.cancelled():
+                    continue  # 跳过已取消的任务
+
                 news_list = future.result()
-
-                # 判断是否停止爬取
-                self.detect_stop_status()
-                if self.is_stop:
-                    break  # 提前终止处理结果
-
-                if news_list:
-                    self.unique_news.extend(news_list)
-                    news_list = remove_duplicates(news_list)
-                    # 确保对列表的修改是线程安全的
-                    self.process_and_store_news(news_list)
+                self.process_news_content(news_list)
 
     def fetch_page_data(self, page_index):
         """
@@ -114,6 +121,8 @@ class Scraper(PageMother):
         :param page_index: 当前页码
         :return: 解析后的新闻列表
         """
+        if self.is_stop_search:
+            return
 
         if self.method.upper() == 'GET':
             session = self.method_GET(page_index)
@@ -133,15 +142,23 @@ class Scraper(PageMother):
                 news_list = None
         except Exception as e:
             self.logger.error(f"{self.city_name} - 第{page_index}页数据解析失败：{e}")
+            self.null_news_list_num += 1
+            # 判断是否停止爬取
+            self.detect_search_status()
             return []
 
         self.logger.info(f"{self.city_name} - 正在爬取第 {int(page_index/self.num_added_each_time)}/{self.total_page_num} 页数据 - "
                          f"获取URL数据 {len(news_list)}/{self.each_page_news_num} 条"
                          f" - 已获取 {len(self.unique_news)}/{self.total_news_num} 条新闻URL")
 
+        if not news_list or len(news_list) == 0:
+            self.null_news_list_num += 1
+            # 判断是否停止爬取
+            self.detect_search_status()
+
         return news_list
 
-    def process_and_store_news(self, news_data, is_direct_fetch=False):
+    def extract_news_detail(self, news_data, is_direct_fetch=False):
         """
         处理并存储新闻数据
         :param news_data:
@@ -158,6 +175,8 @@ class Scraper(PageMother):
                 # 确保返回的数据长度大于1，否则视为无效数据
                 if len(data_list) < 2:
                     self.null_news_num += 1
+                    # 判断是否停止爬取
+                    self.detect_stop_status()
 
                 self.total_news_data.extend(data_list)
             self.logger.info(f"{self.city_name} - 已成功获取 {len(self.total_news_data)}/{self.total_news_num} 条新闻正文数据")
@@ -170,15 +189,16 @@ class Scraper(PageMother):
 
         :return: 爬取到的页面 SessionPage对象
         """
-        session = SessionPage()
-
         url = self.set_url(current_page_num)
 
         self.logger.info(f"{self.city_name} - URL: {url}")
 
-        session.get(url=url, proxies=self.proxies, **self.params, timeout=30)
-        # session = requests.get(url=url, proxies=self.proxies, **self.params, timeout=30)
-        time.sleep(random.randrange(1, 2))
+        if self.is_by_requests:
+            session = requests.get(url=url, proxies=self.proxies, **self.params, timeout=30)
+        else:
+            session = SessionPage()
+            session.get(url=url, proxies=self.proxies, **self.params, timeout=30)
+        time.sleep(random.randrange(5, 8))
 
         return session
 
@@ -195,28 +215,21 @@ class Scraper(PageMother):
         # 复制参数字典，防止原参数字典被修改
         data_copy = self.set_url(current_page_num)
 
-        # 判断是否为json数据
-        if self.is_post_by_json:
-            session.post(url=self.base_url, proxies=self.proxies, json=data_copy, **self.params)
-
-            # session.post(url=data_copy, proxies=self.proxies, json=self.post_data, **self.params)
-            if session.response.status_code == 200:
-                time.sleep(random.randrange(1, 2))
-                return session
-
         try:
-            session.post(url=self.base_url, proxies=self.proxies, data=data_copy, **self.params)
-            # session = requests.post(url=self.base_url, proxies=self.proxies, data=data_copy, **self.params)
+            # 判断是否为json数据
+            if self.is_post_by_json:
+                if self.is_by_requests:
+                    session = requests.post(url=self.base_url, proxies=self.proxies, json=data_copy, **self.params)
+                else:
+                    session.post(url=self.base_url, proxies=self.proxies, json=data_copy, **self.params)
+            else:
+                if self.is_by_requests:
+                    session = requests.post(url=self.base_url, proxies=self.proxies, data=data_copy, **self.params)
+                else:
+                    session.post(url=self.base_url, proxies=self.proxies, data=data_copy, **self.params)
+
         except Exception as e:
             session.post(url=self.base_url, proxies=self.proxies, json=data_copy, **self.params)
-        finally:
-            if isinstance(session, SessionPage):
-                if session.response.status_code != 200:
-                    session.post(url=self.base_url, proxies=self.proxies, json=data_copy, **self.params)
-                    if session.response.status_code == 200:
-                        self.is_post_by_json = True
-
-            pass
 
         time.sleep(random.randrange(1, 2))
         return session
@@ -301,18 +314,13 @@ class Scraper(PageMother):
                              f"获取URL数据 {len(news_list)}/{self.each_page_news_num} 条"
                              f" - 已获取 {len(self.unique_news)}/{self.total_news_num} 条新闻URL")
 
-            # 处理新闻数据
-            if news_list:
-                self.unique_news.extend(news_list)
-                news_list = remove_duplicates(news_list)
-                # 确保对列表的修改是线程安全的
-                self.process_and_store_news(news_list)
+            self.process_news_content(news_list)
 
             # 点击下一页按钮
             try:
                 next_button = page.ele(self.content_xpath['next_button'])
                 next_button.click()
-                page.wait(1, 3)
+                page.wait(5, 8)
             except Exception as e:
                 self.logger.success(f"{self.city_name} - 解析完成，无下一页按钮")
                 break
@@ -367,28 +375,37 @@ class Scraper(PageMother):
         """
 
         news_list = []
+        html = None
+
+        if isinstance(session, requests.Response):
+            html = make_session_ele(session.content.decode('utf-8'))
+        elif isinstance(session, SessionPage) or isinstance(session, ChromiumPage):
+            html = session
+        else:
+            ValueError("Unsupported session type")
 
         # 获取元素
-        frames = session.eles(self.content_xpath['frames'])
+        frames = html.eles(self.content_xpath['frames'])
         for frame in frames:
             try:
-                if isinstance(frame.ele(self.content_xpath['title']), str):
-                    title = frame.ele(self.content_xpath['title'])
+                title_ele = frame.ele(self.content_xpath['title'])
+                if isinstance(title_ele, str):
+                    title = title_ele
                 else:
-                    title = frame.ele(self.content_xpath['title']).text or frame.ele(self.content_xpath['title']).attr('title')
+                    title = title_ele.text or title_ele.attr('title')
 
                 # 获取日期
                 date = None
-                for xpath in self.content_xpath['date']:
-                    date = frame.ele(xpath)
-                    if date:
-                        if isinstance(date, str):
-                            date = format_date(date.strip())
+                if 'date' in self.content_xpath.keys():
+                    for xpath in self.content_xpath['date']:
+                        date_ele = frame.ele(xpath)
+                        if date_ele and isinstance(date_ele, str):
+                            date = format_date(date_ele.strip())
                         else:
-                            date = format_date(date.text.strip())
-                        break
+                            date = format_date(date_ele.text.strip())
+                            break
                 if not date:
-                    date = '2024-01-01'
+                    date = ''
 
                 # 获取URL
                 if 'url' not in self.content_xpath or not self.content_xpath['url']:
@@ -411,7 +428,11 @@ class Scraper(PageMother):
             # title_url = title_url.group(1) if title_url else None
             # date = date.group(1) if date else None
 
-            if title_url:
+            if title_url and title:
+
+                if title_url.startswith('http') is False:
+                    title_url = 'https://search.sh.gov.cn' + title_url
+
                 news_dict = {'province': self.province_name, 'city': self.city_name,
                              'topic': title, 'date': date, 'url': title_url}
 
@@ -446,8 +467,47 @@ class Scraper(PageMother):
 
             return data_copy
 
+    def process_news_content(self, news_list):
+        """
+        处理
+
+        :param news_list:
+        :return:
+        """
+        if self.is_stop:
+            return  # 提前终止处理结果
+
+        # 处理新闻数据
+        if news_list and len(news_list) > 0:
+            unique_news_list = remove_duplicates(news_list, self.unique_news)
+
+            if not unique_news_list or len(unique_news_list) <= 0:
+                self.null_news_num += 1
+                # 判断是否停止爬取
+                self.detect_stop_status()
+                return
+
+            for news in unique_news_list:
+                identifier = (news['topic'], news['date'])
+                self.unique_news.add(identifier)
+            # 确保对列表的修改是线程安全的
+            self.extract_news_detail(unique_news_list)
+        else:
+            self.null_news_list_num += 1
+
     def detect_stop_status(self):
-        if self.null_news_num >= 20:
+        """
+        检测是否停止爬取
+
+        :return:
+        """
+        if self.null_news_num >= self.max_null_news_num:
             self.is_stop = True
             self.logger.warning(f"{self.city_name} - 已获取 {len(self.total_news_data)}/{self.total_news_num} 条新闻正文数据全部为None，停止爬取")
+
+    def detect_search_status(self):
+        if self.null_news_list_num >= self.max_null_news_num:
+            self.is_stop_search = True
+            self.logger.warning(
+                f"{self.city_name} - 已获取 {len(self.total_news_data)}/{self.total_news_num} 条搜索结果全部为None，停止爬取")
 

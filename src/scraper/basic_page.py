@@ -42,6 +42,7 @@ logger.add(
     sys.stderr,
     format="<green>{time:YYYY-MM-DD HH:mm:ss} - {level} - {message}</green>",
     level="SUCCESS",
+    # level="DEBUG",
     filter=lambda record: record["level"].name not in ["INFO", "WARNING", "ERROR"]
 )
 
@@ -61,7 +62,7 @@ class PageMother:
     """
 
     def __init__(self, city_info: dict, content_xpath: dict = None, is_headless=True,
-                 thread_num: int = 3, proxies: dict = None):
+                 thread_num: int = 5, proxies: dict = None):
         """
         初始化爬虫母类。
 
@@ -95,7 +96,7 @@ class PageMother:
         # 存储新闻数据
         self.total_news_data = []
         # 存储去重后的新闻数据
-        self.unique_news = []
+        self.unique_news = set()
         # 多线程程序锁
         self.lock = threading.Lock()
 
@@ -107,6 +108,8 @@ class PageMother:
         options = ChromiumOptions()
         # 设置每次打开的浏览器
         options.auto_port()
+        # options.set_argument('--ignore-certificate-errors')
+        options.set_argument("--blink-settings=imagesEnabled=false")
         # 设置浏览器代理
         options.set_proxy('')
         # 无头模式
@@ -149,7 +152,7 @@ class PageMother:
         for data in self.total_news_data:
             # 合并 content 列表中的所有文本
             full_content = ' '.join(data['content'])  # 将列表转换为单个字符串
-            first_30_chars = full_content[:200]  # 提取前200个字符
+            first_30_chars = full_content[:300]  # 提取前300个字符
 
             # 使用前30个字符作为字典键来筛选和存储最优数据
             if first_30_chars in best_data:

@@ -80,10 +80,10 @@ def fetch_page_content(page, url, title):
 
     # 尝试获取页面的所有元素
     try:
-        elements = tab.eles('@text()')
+        elements = tab.s_eles('@text()')
         if not elements:  # 如果未找到元素，尝试刷新页面
             tab.refresh()
-            elements = tab.eles('xpath://*')
+            elements = tab.eles('@text()')
     except Exception as e:
         logger.error(f"没有必要元素 - {e} - {url}")
         tab.close()
@@ -241,7 +241,7 @@ def contains_keywords(text):
     返回:
     boolean -- 是否包含关键词。
     """
-    keywords = ["学习考察", "考察学习"]
+    keywords = ["考察", "学习"]
     return any(keyword in text for keyword in keywords)
 
 
@@ -268,7 +268,11 @@ def process_news_content(news_data: list, page: ChromiumPage, unique_news: list)
         futures = [executor.submit(is_content_valuable, news, page) for news in news_data]
 
         for future in as_completed(futures):
-            result = future.result()
-            if result:
-                unique_news.append(result)
+            try:
+                result = future.result()
+                if result:
+                    unique_news.append(result)
+            except Exception as e:
+                logger.error(f"处理新闻内容时出现问题 - {e}")
+                continue
     return unique_news
