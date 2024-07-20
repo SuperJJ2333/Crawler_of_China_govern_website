@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
     content_xpath = {'frames': 'x:/html/body/div[1]/div[2]/div/div[1]/div/div',
                      'title': 'x://h3/a',
-                     'date': ['x://span'],
+                     'date': ['x:/span'],
                      # 'url': 'x://a'
                      }
 
