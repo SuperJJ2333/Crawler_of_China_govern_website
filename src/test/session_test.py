@@ -13,7 +13,7 @@ import urllib.parse
 
 page = DrissionPage.SessionPage()
 
-url = 'https://intellsearch.jl.gov.cn/api/data/list'
+url = 'https://www.dxal.gov.cn/search5/search/s'
 header = None
 
 # 创建一个空的代理字典
@@ -22,7 +22,7 @@ non_proxies = {
     "https": None
 }
 
-headers = {"Accept":"*/*","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6","Connection":"keep-alive","Content-Length":"771","Content-Type":"application/x-www-form-urlencoded; charset=UTF-8","Cookie":"_trs_uv=ly41tlqg_79_f0tk; trs_search_uv=4FC1B33D9B3B4043BA1AECC2D51B930F432; wzws_sessionid=gTVmNDU5MaBmjSuigDEyMC4yMzYuMTYzLjExMIIwNzY0YzU=; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%221907234ba7f80-0599e184cf9bfd-4c657b58-1327104-1907234ba80489%22%2C%22first_id%22%3A%22%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22identities%22%3A%22eyIkaWRlbnRpdHlfY29va2llX2lkIjoiMTkwNzIzNGJhN2Y4MC0wNTk5ZTE4NGNmOWJmZC00YzY1N2I1OC0xMzI3MTA0LTE5MDcyMzRiYTgwNDg5In0%3D%22%2C%22history_login_id%22%3A%7B%22name%22%3A%22%22%2C%22value%22%3A%22%22%7D%2C%22%24device_id%22%3A%221907234ba7f80-0599e184cf9bfd-4c657b58-1327104-1907234ba80489%22%7D","Host":"intellsearch.jl.gov.cn","Origin":"https://intellsearch.jl.gov.cn","Sec-Fetch-Dest":"empty","Sec-Fetch-Mode":"cors","Sec-Fetch-Site":"same-origin","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0","X-Requested-With":"XMLHttpRequest","sec-ch-ua":"\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Microsoft Edge\";v=\"126\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\""}
+headers = {"Accept":"*/*","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6","Connection":"keep-alive","Content-Length":"449","Content-Type":"application/x-www-form-urlencoded; charset=UTF-8","Cookie":"name=value; name=value; name=value; verid=false; arialoadData=false; mozi-assist={%22show%22:false%2C%22audio%22:false%2C%22speed%22:%22middle%22%2C%22zomm%22:1%2C%22cursor%22:false%2C%22pointer%22:false%2C%22bigtext%22:false%2C%22overead%22:false}; 2327000040=5a2m5Lmg6ICD5a+fIOiAg+Wvn+WtpuS5oCzogIPlr5/lrabkuaAs5a2m5Lmg6ICD5a+f","Host":"www.dxal.gov.cn","Origin":"https://www.dxal.gov.cn","Sec-Fetch-Dest":"empty","Sec-Fetch-Mode":"cors","Sec-Fetch-Site":"same-origin","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0","X-Requested-With":"XMLHttpRequest","sec-ch-ua":"\"Chromium\";v=\"130\", \"Microsoft Edge\";v=\"130\", \"Not?A_Brand\";v=\"99\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\""}
 
 
 proxies = {
@@ -48,12 +48,13 @@ decoded_params = urllib.parse.unquote(encoded_params)
 
 params_dict = json.loads(decoded_params)
 
-json_str = 'siteCode=3713000037&tab=bz&timestamp=1715158913819&wordToken=e8f8716f75089af50052448c127596d9&page=3&pageSize=20&qt=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F+%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&timeOption=2&sort=relevance&keyPlace=0&fileType=&startDateStr=2018-01-01&endDateStr=2018-12-31'
+json_str = 'searchWord=%25E5%25AD%25A6%25E4%25B9%25A0%25E8%2580%2583%25E5%25AF%259F%2520%25E8%2580%2583%25E5%25AF%259F%25E5%25AD%25A6%25E4%25B9%25A0&siteCode=2327000040&column=%25E5%2585%25A8%25E9%2583%25A8&pageSize=10&pageNum=1&sonSiteCode=&checkHandle=1&searchSource=0&areaSearchFlag=0&secondSearchWords=&topical=&docName=&label=&countKey=0&uc=0&left_right_index%3D=0&searchBoxSettingsIndex=0&orderBy=0&startTime=&endTime=&timeStamp=0&strFileType=&wordPlace=1'
 
 # page.get(url, headers=headers, verify=False)
 # page.post(url, data=data_dict, proxies=proxies, headers=headers)
 # page.post(url, params=params_dict, proxies=non_proxies, headers=headers)
-page.post(url, params=params_dict, proxies=non_proxies, headers=headers, verify=False)
+# page.post(url, params=params_dict, proxies=non_proxies, headers=headers, verify=False)
+page.post(url, json=json_str, proxies=non_proxies, headers=headers, verify=False)
 
 # request = requests.post(url, params=data_dict, proxies=non_proxies, headers=headers, verify=True)
 

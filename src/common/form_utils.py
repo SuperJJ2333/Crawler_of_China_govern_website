@@ -21,7 +21,7 @@ def save_to_excel(unique_news, name, province):
     df = pd.DataFrame(unique_news)
 
     # 按照指定顺序排列列
-    df = df[["province", "city", "topic", "date", "url", "content"]]
+    df = df[["code", "province", "city", "topic", "date", "url", "content"]]
 
     # 获取当前文件的目录（假设此脚本位于src/utils文件夹中）
     current_dir = os.path.dirname(__file__)
@@ -206,6 +206,15 @@ def set_nested_value(dic, path, value):
         return dic
 
     if '__EVENTARGUMENT' in dic:
+        # 防止是字符串，做额外处理
+        if isinstance(path, str):
+            parsed_query = parse.parse_qs(dic)
+            parsed_query[path] = f'Page${value}'
+
+            # 将解析后的查询参数转换回查询字符串
+            updated_query_string = parse.urlencode(parsed_query, doseq=True)
+
+            return updated_query_string
         dic[path] = f'Page${value}'
         return dic
 
@@ -222,8 +231,27 @@ def set_nested_value(dic, path, value):
 
     if isinstance(path, list):
         # 如果路径是列表，为每个键设置相同的值
-        for key in path:
-            dic[key] = value
+        for each_key in path:
+            if "." not in each_key:
+                dic[each_key] = value
+                continue
+
+            # 如果路径是点分隔的字符串，按照现有逻辑处理
+            new_key = each_key.split('.')  # 通过点分割路径字符串获取所有键
+            current_dict = dic  # 复制字典引用
+
+            for true_key in new_key[:-1]:  # 遍历所有键（除了最后一个）
+                if true_key not in current_dict or not isinstance(current_dict[true_key], dict):
+                    current_dict[true_key] = {}  # 如果键不存在或其值不是字典，则初始化为字典
+                current_dict = current_dict[true_key]  # 获取键对应的字典值
+
+            # 特殊情况
+            if new_key[-1] == 'goToCurrent':
+                current_dict[new_key[-1]] = int(value) + 1 # 在最后一个键处设置值
+                continue
+
+            current_dict[new_key[-1]] = int(value)  # 在最后一个键处设置值
+
     elif isinstance(path, str):
         # 如果路径是点分隔的字符串，按照现有逻辑处理
         keys = path.split('.')  # 通过点分割路径字符串获取所有键

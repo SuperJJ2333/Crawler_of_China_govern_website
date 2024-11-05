@@ -36,6 +36,7 @@ class Scraper(PageMother):
         必须参数：
         :param city_info: 城市信息，格式为{'province': '省份名称', 'city': '城市名称'}
         :param method: 请求方法，GET 或 POST
+        :param data_type: api返回的数据类型，JSON 或 HTML页面
         可选参数：
         :param content_xpath: xpath规则，用于提取新闻URL
         :param is_headless: 是否使用无头浏览器
@@ -289,6 +290,7 @@ class Scraper(PageMother):
         url = self.set_url(1)
 
         page.get(url)
+        time.sleep(3)
 
         for i in range(self.total_page_num):
 
@@ -354,6 +356,7 @@ class Scraper(PageMother):
         # 遍历json列表，清理数据
         if isinstance(json_list, list):
             for news in json_list:
+                news['code'] = self.city_code
                 news['province'] = self.province_name
                 news['city'] = self.city_name
                 # 清理数据
@@ -431,9 +434,9 @@ class Scraper(PageMother):
             if title_url and title:
 
                 if title_url.startswith('http') is False:
-                    title_url = 'https://search.sh.gov.cn' + title_url
+                    title_url = 'https://al.gov.cn/' + title_url
 
-                news_dict = {'province': self.province_name, 'city': self.city_name,
+                news_dict = {'code': self.city_code,'province': self.province_name, 'city': self.city_name,
                              'topic': title, 'date': date, 'url': title_url}
 
                 # 清理URL字符串
@@ -469,7 +472,7 @@ class Scraper(PageMother):
 
     def process_news_content(self, news_list):
         """
-        处理
+        处理新闻内容
 
         :param news_list:
         :return:

@@ -74,6 +74,7 @@ class PageMother:
         is_headless (bool): 是否启用无头浏览器模式。
         """
         # 必须参数
+        self.city_code = city_info['city_code']
         self.city_name = city_info['city_name']
         self.province_name = city_info['province_name']
         self.base_url = city_info['base_url']
