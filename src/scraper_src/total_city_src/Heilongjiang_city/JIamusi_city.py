@@ -53,7 +53,7 @@ if __name__ == '__main__':
 
     headers = {"Host":"api.so-gov.cn","Connection":"keep-alive","Content-Length":"239","sec-ch-ua":"\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Microsoft Edge\";v=\"126\"","Accept":"application/json, text/javascript, */*; q=0.01","Content-Type":"application/x-www-form-urlencoded; charset=UTF-8","sec-ch-ua-mobile":"?0","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0","suid":"a04ff7d298d996e625c2e30a5f956887","sec-ch-ua-platform":"\"Windows\"","Origin":"https://www.jms.gov.cn","Sec-Fetch-Site":"cross-site","Sec-Fetch-Mode":"cors","Sec-Fetch-Dest":"empty","Referer":"https://www.jms.gov.cn/so/s?qt=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F+%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6"}
 
-    post_data = {'siteCode': '2308000047', 'tab': 'all', 'timestamp': '1720948603570', 'wordToken': 'cbb270308c700d8dc274356227273d30', 'page': '4', 'pageSize': '20', 'qt': '学习考察 考察学习', 'timeOption': '0', 'sort': 'relevance', 'keyPlace': '0', 'fileType': ''}
+    post_data = 'siteCode=2308000047&tab=all&timestamp=1740735533246&wordToken=67d64085f08df034b85ce1f050eb816a&page=2&pageSize=20&qt=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F+%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&timeOption=0&sort=relevance&keyPlace=0&fileType='
 
     page_num_name = 'page'
 

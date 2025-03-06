@@ -241,7 +241,7 @@ def contains_keywords(text):
     返回:
     boolean -- 是否包含关键词。
     """
-    keywords = ["考察", "学习"]
+    keywords = ["考察", "学习", "交流"]
     return any(keyword in text for keyword in keywords)
 
 

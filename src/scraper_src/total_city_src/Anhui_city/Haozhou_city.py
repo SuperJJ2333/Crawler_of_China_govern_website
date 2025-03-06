@@ -10,7 +10,7 @@ if __name__ == '__main__':
     city_info = {
         'city_name': '亳州市',
         'province_name': '安徽省',
-        'province': 'Anhui',
+        'province': '安徽省',
         'base_url': 'https://search.bozhou.gov.cn/searchData?keyword=%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&field=all&page={page_num}',
         # 新闻总数
         # 'total_news_num': 24,

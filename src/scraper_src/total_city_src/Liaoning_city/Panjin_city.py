@@ -9,7 +9,7 @@ if __name__ == '__main__':
 
     city_info = {
         'city_name': '盘锦市',
-        'province_name': '山东省',
+        'province_name': '辽宁省',
         'province': 'Shandong',
 
         'base_url': 'https://www.panjin.gov.cn/search/?word=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F+%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&page={page_num}&site=allstation',

@@ -5,7 +5,7 @@ if __name__ == '__main__':
 
     # 爬虫基本信息
     city_info = {'name': 'Chizhou',
-                 'province': 'Anhui',
+                 'province': '安徽省',
                  'total_news_num': 2318,
                  'each_page_num': 15,
                  'targeted_year': 2019,

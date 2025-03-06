@@ -43,10 +43,10 @@ if __name__ == '__main__':
     city_info = {
         'city_name': '芜湖市',
         'province_name': '安徽省',
-        'province': 'Anhui',
-        'base_url': 'https://www.wuhu.gov.cn/whsearch/site/label/8888?_=0.431810624427174&labelName=searchDataList&isJson=true&isForPage=true&target=&pageSize=20&titleLength=35&contentLength=80&showType=2&ssqdDetailTpl=35931&islight=true&columnId=&keywords=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F+%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&subkeywords=&typeCode=all&isAllSite=true&platformCode=&siteId=&fromCode=title&fuzzySearch=true&attachmentType=&datecode=&sort=intelligent&colloquial=true&orderType=0&minScore=&fileNum=&publishDepartment=&pageIndex={page_num}',
+        'province': '安徽省',
+        'base_url': 'https://www.wuhu.gov.cn/whsearch/site/label/8888?_=0.431810624427174&labelName=searchDataList&isJson=true&isForPage=true&target=&pageSize=20&titleLength=35&contentLength=80&showType=2&ssqdDetailTpl=35931&islight=true&columnId=&keywords=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%20%E4%BA%A4%E6%B5%81%E5%AD%A6%E4%B9%A0&subkeywords=&typeCode=all&isAllSite=true&platformCode=&siteId=&fromCode=title&fuzzySearch=true&attachmentType=&datecode=&sort=intelligent&colloquial=true&orderType=0&minScore=&fileNum=&publishDepartment=&pageIndex={page_num}',
 
-        'total_news_num': 2067,
+        'total_news_num': 2551,
         'each_page_news_num': 20,
     }
 

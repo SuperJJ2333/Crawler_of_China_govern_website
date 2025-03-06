@@ -47,7 +47,7 @@ if __name__ == '__main__':
 
         'base_url': 'https://zs.kaipuyun.cn/commonAggs',
 
-        'total_news_num': 277,
+        'total_news_num': 5382,
         'each_page_news_num': 10,
     }
 
@@ -69,12 +69,7 @@ if __name__ == '__main__':
   "sec-ch-ua-platform": "\"Windows\""
 }
 
-    post_data = {'searchWord': '%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F', 'siteCode': '3607000056',
-                 'column': '%E7%AB%99%E7%BE%A4', 'wordPlace': '0', 'orderBy': '0',
-                 'startTime': '', 'endTime': '',
-                 'pageSize': '10', 'pageNum': '0', 'timeStamp': '5', 'checkHandle': '1',
-                 'areaSearchFlag': '1', 'countKey': '0',
-                 'manualWord': '%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F'}
+    post_data = 'searchWord=%25E5%25AD%25A6%25E4%25B9%25A0%25E8%2580%2583%25E5%25AF%259F%25E4%25BA%25A4%25E6%25B5%2581%25E5%25AD%25A6%25E4%25B9%25A0&siteCode=3607000056&column=%25E7%25AB%2599%25E7%25BE%25A4&wordPlace=0&orderBy=0&startTime=&endTime=&pageSize=10&pageNum=0&timeStamp=0&checkHandle=1&strFileType=&areaSearchFlag=1&secondSearchWords=&topical=&docName=&label=&countKey=0&searchBoxSettingsIndex=&manualWord=%25E5%25AD%25A6%25E4%25B9%25A0%25E8%2580%2583%25E5%25AF%259F%25E4%25BA%25A4%25E6%25B5%2581%25E5%25AD%25A6%25E4%25B9%25A0'
 
     page_num_name = 'pageNum'
 

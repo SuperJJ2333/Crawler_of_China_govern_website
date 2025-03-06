@@ -10,11 +10,11 @@ if __name__ == '__main__':
     city_info = {
         'city_name': '淮南市',
         'province_name': '安徽省',
-        'province': 'Anhui',
-        'base_url': 'https://www.huainan.gov.cn/site/search/4964522?platformCode=&fuzzySearch=false&orderType=0&isAllSite=true&siteId=&columnId=&columnIds=&typeCode=all&beginDate=&endDate=&fromCode=title&keywords=%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&oldKeywords=&subkeywords=&excColumns=&datecode=&sort=desc&type=&tableColumnId=&indexNum=&catIds=&fileNum=&flag=false&colloquial=&pageIndex={page_num}&pageSize=10',
+        'province': '安徽省',
+        'base_url': 'https://www.huainan.gov.cn/site/search/4964522?platformCode=&fuzzySearch=false&orderType=0&isAllSite=true&siteId=&columnId=&columnIds=&typeCode=all&beginDate=&endDate=&fromCode=title&keywords=%E4%BA%A4%E6%B5%81%E5%AD%A6%E4%B9%A0&oldKeywords=&subkeywords=&excColumns=&datecode=&sort=desc&type=&tableColumnId=&indexNum=&catIds=&fileNum=&flag=false&colloquial=&pageIndex={page_num}&pageSize=10',
 
         # 新闻总数
-        'total_news_num': 330,
+        'total_news_num': 2639,
         'each_page_news_num': 10,
     }
 

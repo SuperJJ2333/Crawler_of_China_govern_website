@@ -42,10 +42,10 @@ if __name__ == '__main__':
     city_info = {
         'city_name': '马鞍山市',
         'province_name': '安徽省',
-        'province': 'Anhui',
+        'province': '安徽省',
         'base_url': 'https://www.mas.gov.cn/site/label/8888',
         # 新闻总数
-        'total_news_num': 227,
+        'total_news_num': 375,
         'each_page_news_num': 10,
     }
 
@@ -58,7 +58,7 @@ if __name__ == '__main__':
 
     listen_name = 'www.mas.gov.cn/site/label/8888'
 
-    post_data = {'labelName': 'searchDataList', 'fromCode': 'title', 'showType': '2', 'titleLength': '35', 'contentLength': '100', 'islight': 'true', 'isJson': 'true', 'pageSize': '10', 'pageIndex': '2', 'isForPage': 'true', 'sort': 'intelligent', 'datecode': '', 'typeCode': 'articleNews,pictureNews,videoNews,policyDoc,explainDoc,dataOpen,bbs,public_content,messageBoard,interviewInfo,collectInfo,survey,knowledgeBase', 'siteId': '4697368', 'columnId': '', 'platformCode': '', 'isAllSite': 'false', 'isForNum': 'true', 'beginDate': '', 'endDate': '', 'keywords': '学习考察 考察学习', 'subkeywords': '', 'fuzzySearch': 'true', 'colloquial': 'true', 'excColumns': '4718732,4718799,4718800,4718801,4718802,4718803,4718804,4718805,4718809,4718812,4718818,4718824,4718806,4718810,4718813,4718819,4718825,4718807,4718811,4718814,4718820,4718826,4718808,4718815,4718821,4718827,4718864,4718816,4718822,4718817,4718823', 'isSkipConvert': 'false', 'privacyOpen': 'true'}
+    post_data = {'labelName': 'searchDataList', 'fromCode': 'title', 'showType': '2', 'titleLength': '35', 'contentLength': '100', 'islight': 'true', 'isJson': 'true', 'pageSize': '10', 'pageIndex': '2', 'isForPage': 'true', 'sort': 'intelligent', 'datecode': '', 'typeCode': 'articleNews,pictureNews,videoNews,policyDoc,explainDoc,dataOpen,bbs,public_content,messageBoard,interviewInfo,collectInfo,survey,knowledgeBase', 'siteId': '4697368', 'columnId': '', 'platformCode': '', 'isAllSite': 'false', 'isForNum': 'true', 'beginDate': '', 'endDate': '', 'keywords': '学习考察 交流学习', 'subkeywords': '', 'fuzzySearch': 'true', 'colloquial': 'true', 'excColumns': '4718732,4718799,4718800,4718801,4718802,4718803,4718804,4718805,4718809,4718812,4718818,4718824,4718806,4718810,4718813,4718819,4718825,4718807,4718811,4718814,4718820,4718826,4718808,4718815,4718821,4718827,4718864,4718816,4718822,4718817,4718823', 'isSkipConvert': 'false', 'privacyOpen': 'true'}
 
     page_num_name = 'pageIndex'
 

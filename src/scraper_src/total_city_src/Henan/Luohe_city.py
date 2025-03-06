@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
         'base_url': 'http://www.luohe.gov.cn/search/SolrSearch/searchData',
 
-        'total_news_num': 179,
+        'total_news_num': 15,
         'each_page_news_num': 10,
     }
 

@@ -13,8 +13,8 @@ if __name__ == '__main__':
         'province_name': '甘肃省',
         'province': '甘肃省',
 
-        'base_url': 'http://www.gnzrmzf.gov.cn/gjsous.jsp?wbtreeid=1001&keyword=5a2m5Lmg6ICD5a%2BfIOiAg%2BWvn%2BWtpuS5oA%3D%3D&cc=W10%3D&ot=1&rg=4&tg=5&clid=0&currentnum={page_num}',
-        'total_news_num': 1717,
+        'base_url': 'http://www.gnzrmzf.gov.cn/gjsous.jsp?wbtreeid=1001&keyword=5a2m5Lmg6ICD5a%2Bf5Lqk5rWB5a2m5Lmg&cc=W10%3D&ot=1&rg=4&tg=5&clid=0&currentnum={page_num}',
+        'total_news_num': 2316,
 
         'each_page_news_num': 10,
     }

@@ -48,6 +48,7 @@ if __name__ == '__main__':
 
         'total_news_num': 997,
         'each_page_news_num': 10,
+        'city_code': None,
     }
 
     headers = {"Accept":"application/json, text/javascript, */*; q=0.01","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6","Connection":"keep-alive","Cookie":"arialoadData=false; USER_TOKEN=67ffa59a358b4699ac44bf73480178e1; wzws_sessionid=gjM1NDk1OYE1ZjQ1OTGAMjIxLjQuMzIuMjSgZof6Rw==; Hm_lvt_90475ab6bf9eae9dfbf09d9b720c5c3e=1720183302,1720187481; HMACCOUNT=A202F23FD4E0D795; AGILE_SID=20271A51CD16B0C39AFA29B43FEC5732; AGILE_SID_SHIRO=8b6e3a6d-9836-40b8-8888-fcf9c7088ec3; Hm_lpvt_90475ab6bf9eae9dfbf09d9b720c5c3e=1720187810","Host":"www.bynr.gov.cn","Referer":"https://www.bynr.gov.cn/web/search/5030?content=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%20%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0","Sec-Fetch-Dest":"empty","Sec-Fetch-Mode":"cors","Sec-Fetch-Site":"same-origin","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0","X-Requested-With":"XMLHttpRequest","sec-ch-ua":"\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Microsoft Edge\";v=\"126\"","sec-ch-ua-mobile":"?0","sec-ch-ua-platform":"\"Windows\""}

@@ -54,7 +54,7 @@ if __name__ == '__main__':
         'province_name': '甘肃省',
         'province': 'Gansu',
         'base_url': 'https://www.jcs.gov.cn/api-gateway/jpaas-jsearch-web-server/interface/search/info?websiteid=&q=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%20%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&pg=10&cateid=e513311bc048412e9fae644037d91310&serviceId=baa748b8063d469096a88f8dc817bfbb&p={page_num}',
-        'total_news_num': 1500,
+        'total_news_num': 2000,
         'each_page_news_num': 10,
     }
 

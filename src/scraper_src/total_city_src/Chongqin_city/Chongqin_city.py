@@ -42,7 +42,7 @@ if __name__ == '__main__':
     city_info = {
         'city_name': '重庆市',
         'province_name': '重庆市',
-        'province': 'Chongqing',
+        'province': '重庆市',
         'base_url': 'https://www.cq.gov.cn/irs/front/search',
 
         'total_news_num': 2753,

@@ -43,7 +43,7 @@ if __name__ == '__main__':
     city_info = {
         'city_name': '铜陵市',
         'province_name': '安徽省',
-        'province': 'Anhui',
+        'province': '安徽省',
         'base_url': 'https://www.tl.gov.cn/irs/front/search',
 
         'total_news_num': 1259,

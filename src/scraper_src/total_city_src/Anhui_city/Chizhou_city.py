@@ -10,11 +10,12 @@ if __name__ == '__main__':
     city_info = {
         'city_name': '池州市',
         'province_name': '安徽省',
-        'province': 'Anhui',
+        'province': '安徽省',
         'base_url': 'https://search.chizhou.gov.cn/searchData?collection=&Field=title&siteGroupId=1&keyword=%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&page={page_num}',
         'total_news_num': 555,
 
         'each_page_news_num': 15,
+        'city_code': 107,
     }
 
     content_xpath = {'frames': 'x://*/div[3]/div[1]/div[1]/ul/li',

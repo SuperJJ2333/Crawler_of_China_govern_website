@@ -1,3 +1,4 @@
+import csv
 import math
 import sys
 import threading
@@ -49,6 +50,37 @@ logger.add(
 # 禁用 InsecureRequestWarning
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
+
+def read_region_code_csv():
+    """读取城市编码表"""
+    # 获取当前文件的目录（假设此脚本位于src/utils文件夹中）
+    current_dir = os.path.dirname(__file__)
+
+    # 打开指定路径的CSV文件，采用'gbk'编码方式读取
+    with open(os.path.join(current_dir, '../../docs/region_code.csv'), mode='r', encoding='gbk') as file:
+        reader = csv.DictReader(file)
+        return list(reader)
+
+
+def match_city_code(city_info, region_data_list):
+    """匹配城市名称与编码"""
+    # 获取城市名称和编码的最短长度，以防止匹配出错
+    min_length = min(len(city_info['city_name']), len(region_data_list[0]['城市']))
+
+    # 获取城市名称的前min_length个字符
+    city_name_short = city_info['city_name'][:min_length]
+
+    # 遍历region_data_list，查找匹配的城市名称
+    for region_data in region_data_list:
+        # 如果城市名称的前min_length个字符匹配
+        if city_name_short == region_data['城市'][:min_length]:
+            # 如果匹配成功，则赋值region_data的编码
+            return region_data['编码']
+
+    # 如果没有找到匹配的城市，赋值为city_info中的city_code
+    return city_info['city_code']
+
+
 class PageMother:
     """
     爬虫母类，用于爬取新闻数据。
@@ -74,7 +106,7 @@ class PageMother:
         is_headless (bool): 是否启用无头浏览器模式。
         """
         # 必须参数
-        self.city_code = city_info['city_code']
+        self.city_code = self.initialize_city_code(self, city_info)
         self.city_name = city_info['city_name']
         self.province_name = city_info['province_name']
         self.base_url = city_info['base_url']
@@ -83,7 +115,8 @@ class PageMother:
         self.total_news_num = city_info['total_news_num']
         self.each_page_news_num = city_info['each_page_news_num']
         # 计算总页数
-        self.total_page_num = self.count_page_num()
+        # self.total_page_num = self.count_page_num()
+        self.total_page_num = self.add_extra_page_num()
         # 日志
         self.logger = logger
 
@@ -134,7 +167,9 @@ class PageMother:
         # 处理数据
         self.process_dataframes()
 
-        save_to_excel(self.total_news_data, self.city_name, self.province)
+        if self.total_news_data:
+            save_to_excel(self.total_news_data, self.city_name, self.province_name)
+
 
     def count_page_num(self):
         """获取总页数。"""
@@ -143,6 +178,11 @@ class PageMother:
         else:
             total_page_num = math.ceil(self.total_news_num / self.each_page_news_num)
         return total_page_num
+
+    def add_extra_page_num(self):
+        """增加额外的页数。"""
+        page_num = self.count_page_num()
+        return page_num + page_num // 10
 
     def process_dataframes(self):
         # 移除数据不完整或者'content'键不存在或为空的新闻数据
@@ -166,4 +206,20 @@ class PageMother:
         # 更新self.total_news_data为最优数据集
         self.total_news_data = list(best_data.values())
         self.logger.success(f"{self.city_name} - 清洗后数据为{len(self.total_news_data)}/{self.total_news_num}条")
+
+    @staticmethod
+    def initialize_city_code(self, city_info):
+        """
+        初始化城市编码
+        :param self:
+        :param city_info:
+        :return:
+        """
+        # 读取城市编码表
+        region_data_list = read_region_code_csv()
+
+        # 调用函数进行匹配
+        city_code = match_city_code(city_info, region_data_list)
+
+        return city_code
 

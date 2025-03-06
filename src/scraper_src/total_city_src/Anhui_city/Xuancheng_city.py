@@ -42,7 +42,7 @@ if __name__ == '__main__':
     city_info = {
         'city_name': '宣城市',
         'province_name': '安徽省',
-        'province': 'Anhui',
+        'province': '安徽省',
         'base_url': 'https://search.xuancheng.gov.cn/search?keyword=%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&field=all&inResult=&page={page_num}&siteId=0&fromDays=0',
 
         'total_news_num': 3649,

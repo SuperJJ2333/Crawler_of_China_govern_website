@@ -12,9 +12,9 @@ if __name__ == '__main__':
         'province_name': '河北省',
         'province': 'Hebei',
 
-        'base_url': 'http://www.hengshui.gov.cn/jrobot/search.do?webid=1&pg=12&p={page_num}&tpl=&category=&q=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F+%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&pos=title%2Ccontent%2C_default_search&od=&date=&date=',
+        'base_url': 'http://www.hengshui.gov.cn/jrobot/search.do?webid=1&pg=12&p={page_num}&tpl=&category=&q=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%E4%BA%A4%E6%B5%81%E5%AD%A6%E4%B9%A0&pos=title%2Ccontent%2C_default_search&od=&date=&date=',
 
-        'total_news_num': 89,
+        'total_news_num': 119,
 
         'each_page_news_num': 12,
     }

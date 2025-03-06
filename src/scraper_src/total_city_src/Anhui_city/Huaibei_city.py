@@ -40,7 +40,7 @@ if __name__ == '__main__':
     city_info = {
         'city_name': '淮北市',
         'province_name': '安徽省',
-        'province': 'Anhui',
+        'province': '安徽省',
         'base_url': 'https://www.huaibei.gov.cn/site/label/8888?_=0.3823347659643801&labelName=searchDataList&isJson=true&isForPage=true&excSites=4697629%2C4699146%2C4697634%2C4697584%2C4697632%2C4697650%2C4698945%2C4697636&target=&pageSize=10&titleLength=35&contentLength=100&showType=2&ssqdDetailTpl=35931&islight=true&columnId=&keywords=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%2B%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&subkeywords=&typeCode=all&isAllSite=true&fromCode=title&fuzzySearch=true&attachmentType=&datecode=&sort=intelligent&colloquial=true&orderType=0&platformCode=&siteId=&pageIndex={page_num}',
 
         'total_news_num': 4163,

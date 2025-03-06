@@ -28,7 +28,11 @@ if __name__ == '__main__':
     fiddler_proxies = {'http': 'http://127.0.0.1:8888', 'https': 'http://127.0.0.1:8888'}
 
     scraper = Scraper(city_info, method='get', data_type='html',
-                      content_xpath=content_xpath, headers=headers, is_headless=True,
-                      proxies=fiddler_proxies, verify=False)
+                      content_xpath=content_xpath, headers=headers, is_headless=False,
+                      proxies=fiddler_proxies, verify=False, thread_num=1)
+
+    # scraper = Scraper(city_info, method='get', data_type='html',
+    #                   content_xpath=content_xpath, headers=headers, is_headless=True, thread_num=1)
+    #
     scraper.run()
 

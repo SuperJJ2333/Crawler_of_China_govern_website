@@ -14,7 +14,7 @@ logger.add(
 
 
 def get_Hefei_web():
-    name = "Anhui"
+    name = "安徽省"
 
     base_url = 'https://www.hefei.gov.cn/site/search/6784331?typeCode=all&fuzzySearch=true&orderType=0&oldKeywords=&keywords=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F&dateKey=publishDate&beginDate=2016-01-01&endDate=2016-12-31&fromCode=&colloquial=true&sort=intelligent&isAllSite=true&platformCode=&siteId=&columnId=&subkeywords='
 

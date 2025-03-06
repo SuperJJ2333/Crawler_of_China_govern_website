@@ -11,7 +11,7 @@ if __name__ == '__main__':
     city_info = {
         'city_name': '合肥市',
         'province_name': '安徽省',
-        'province': 'Anhui',
+        'province': '安徽省',
         'base_url': 'https://www.hefei.gov.cn/site/search/6784331?platformCode=&fuzzySearch=false&isAllSite=true&siteId=&columnId=&columnIds=&typeCode=all&beginDate=&endDate=&fromCode=&keywords=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%20%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&oldKeywords=&subkeywords=&filterKeyWords=&excColumns=&dateKey=publishDate&datecode=&sort=intelligent&type=&tableColumnId=&indexNum=&fileNum=&flag=false&pageIndex={page_num}&pageSize=10&colloquial=true',
 
         # 新闻总数

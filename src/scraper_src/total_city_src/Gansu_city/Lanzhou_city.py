@@ -11,9 +11,9 @@ if __name__ == '__main__':
         'city_name': '兰州市',
         'province_name': '甘肃省',
         'province': 'Gansu',
-        'base_url': 'https://www.lanzhou.gov.cn/jrobot/search.do?webid=1&pg=10&p={page_num}&tpl=&category=&q=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F+%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&pos=&od=2&date=&date=',
+        'base_url': 'https://www.lanzhou.gov.cn/jrobot/search.do?webid=1&pg=10&p={page_num}&tpl=&category=&q=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F+%E4%BA%A4%E6%B5%81%E5%AD%A6%E4%B9%A0&pos=&od=2&date=&date=',
 
-        'total_news_num': 329,
+        'total_news_num': 388,
 
         'each_page_news_num': 10,
     }
@@ -30,7 +30,7 @@ if __name__ == '__main__':
     listen_name = 'www.lanzhou.gov.cn/jrobot/search.do'
 
     scraper = Scraper(city_info, method='listen', data_type='html',
-                      content_xpath=content_xpath, headers=headers, is_headless=False, listen_name=listen_name)
+                      content_xpath=content_xpath, headers=headers, is_headless=True, listen_name=listen_name)
 
     scraper.method_LISTEN()
     scraper.save_files()

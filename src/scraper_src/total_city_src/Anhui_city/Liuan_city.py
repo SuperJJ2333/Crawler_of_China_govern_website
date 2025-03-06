@@ -10,10 +10,10 @@ if __name__ == '__main__':
     city_info = {
         'city_name': '六安市',
         'province_name': '安徽省',
-        'province': 'Anhui',
-        'base_url': 'https://www.luan.gov.cn/site/search/6789941?platformCode=&isAllSite=true&siteId=&columnId=&columnIds=&typeCode=&beginDate=&endDate=&fromCode=title&keywords=%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&oldKeywords=&subkeywords=&filterKeyWords=&excColumns=&datecode=&sort=intelligent&orderType=1&fuzzySearch=false&type=&tableColumnId=&indexNum=&fileNum=&flag=false&pageIndex={page_num}&pageSize=10&pid=&leaderTypeId=&liId=',
+        'province': '安徽省',
+        'base_url': 'https://www.luan.gov.cn/site/search/6789941?platformCode=&isAllSite=true&siteId=&columnId=&columnIds=&typeCode=&beginDate=&endDate=&fromCode=&keywords=%E4%BA%A4%E6%B5%81%E5%AD%A6%E4%B9%A0+%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F&oldKeywords=&subkeywords=&filterKeyWords=&excColumns=&datecode=&sort=intelligent&orderType=1&fuzzySearch=false&type=&tableColumnId=&indexNum=&fileNum=&flag=false&pageIndex={page_num}&pageSize=10&pid=&leaderTypeId=&liId=',
         # 新闻总数
-        'total_news_num': 784,
+        'total_news_num': 1047,
         'each_page_news_num': 10,
     }
 

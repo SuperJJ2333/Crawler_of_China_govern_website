@@ -43,7 +43,7 @@ if __name__ == '__main__':
     city_info = {
         'city_name': '黄山市',
         'province_name': '安徽省',
-        'province': 'Anhui',
+        'province': '安徽省',
         'base_url': 'https://www.huangshan.gov.cn/site/label/8888?labelName=searchDataList&fuzzySearch=false&level=&fromCode=title&showType=2&titleLength=35&contentLength=100&islight=true&isJson=true&pageSize=10&pageIndex={page_num}&isForPage=true&sort=intelligent&datecode=&typeCode=all&siteId=&columnId=&catIds=&platformCode=&isAllSite=true&isForNum=true&beginDate=&endDate=&keywords=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F+%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&subkeywords=&isAttach=1&colloquial=true&source_code=&orderType=0',
         'total_news_num': 386,
         'each_page_news_num': 10,

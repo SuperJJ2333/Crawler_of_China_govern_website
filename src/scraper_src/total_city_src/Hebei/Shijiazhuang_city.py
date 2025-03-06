@@ -46,13 +46,13 @@ if __name__ == '__main__':
 
         'base_url': 'https://api.so-gov.cn/s',
 
-        'total_news_num': 312,
+        'total_news_num': 388,
         'each_page_news_num': 20,
     }
 
     headers = {"Host":"api.so-gov.cn","sec-ch-ua":"\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Microsoft Edge\";v=\"126\"","Accept":"application/json, text/javascript, */*; q=0.01","Content-Type":"application/x-www-form-urlencoded; charset=UTF-8","sec-ch-ua-mobile":"?0","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0","suid":"385574c778699dddd356e1f05e0c6266","sec-ch-ua-platform":"\"Windows\"","Origin":"https://www.sjz.gov.cn","Sec-Fetch-Site":"cross-site","Sec-Fetch-Mode":"cors","Sec-Fetch-Dest":"empty","Referer":"https://www.sjz.gov.cn/","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6"}
 
-    post_data = {'siteCode': '1301000003', 'tab': 'all', 'timestamp': '1720894657367', 'wordToken': 'a652756d4c1f4d2d33fdbdcda9f41116', 'page': '4', 'pageSize': '20', 'qt': '学习考察 考察学习', 'timeOption': '0', 'sort': 'relevance', 'keyPlace': '0', 'fileType': ''}
+    post_data = 'siteCode=1301000003&tab=all&timestamp=1740670468231&wordToken=d7cb0193880a07bdbebd1f3483dd151d&page=2&pageSize=20&qt=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F+%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&timeOption=0&sort=relevance&keyPlace=0&fileType='
 
     page_num_name = 'page'
     fiddler_proxies = {

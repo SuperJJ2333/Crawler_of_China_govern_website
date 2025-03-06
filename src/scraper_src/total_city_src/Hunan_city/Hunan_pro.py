@@ -12,9 +12,9 @@ if __name__ == '__main__':
         'province_name': '湖南省',
         'province': 'Hunan',
 
-        'base_url': 'https://searching.hunan.gov.cn/hunan/{city_code}/news?q=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%20%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&searchfields=title&sm=0&columnCN=&iszq=&aggr_iszq=&p={page_num}&timetype=timeqb',
+        'base_url': 'https://searching.hunan.gov.cn/hunan/{city_code}/news?q=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%20%E4%BA%A4%E6%B5%81%E5%AD%A6%E4%B9%A0&searchfields=title&sm=0&columnCN=&iszq=&aggr_iszq=&p={page_num}&timetype=timeqb',
 
-        'total_news_num': 1000,
+        'total_news_num': 5000,
 
         'each_page_news_num': 10,
     }
@@ -37,15 +37,15 @@ if __name__ == '__main__':
         "sec-ch-ua-mobile": "?0", "sec-ch-ua-platform": "\"Windows\""}
 
     city_code = {
-        # '岳阳市': [976000000, 15301], '永州市': [981101000, 10368],
-        #          '株洲市': [973000000, 1901],
+        '岳阳市': [976000000, 15301], '永州市': [981101000, 10368],
+                 '株洲市': [973000000, 1901],
         '郴州市': [980000000, 21050],
-        # '湘潭市': [974000000, 1847],
+        '湘潭市': [974000000, 1847],
         '娄底市': [983101000, 4999],
-        # '怀化市': [982001000, 30547], '常德市': [977001000, 17683],
-        #          '邵阳市': [975101000, 12701],
-        # '益阳市': [979000000, 12558], '张家界市': [978101000, 25409],
-        #          '衡阳市': [972101000, 47480], '长沙市': [971101000, 1801],
+        '怀化市': [982001000, 30547], '常德市': [977001000, 17683],
+                 '邵阳市': [975101000, 12701],
+        '益阳市': [979000000, 12558], '张家界市': [978101000, 25409],
+                 '衡阳市': [972101000, 47480], '长沙市': [971101000, 1801],
     }
 
     for city_name, code in city_code.items():

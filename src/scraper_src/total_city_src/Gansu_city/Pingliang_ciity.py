@@ -53,7 +53,7 @@ if __name__ == '__main__':
         'city_name': '平凉市',
         'province_name': '甘肃省',
         'province': 'Gansu',
-        'base_url': 'http://www.pingliang.gov.cn/api-gateway/jpaas-jsearch-web-server/interface/search/info?websiteid=&q=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%20%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&pg=&cateid=faf661dbe7e94a839ac6f7a652de7af4&serviceId=7112f33f9410490396c03839bf99647f&p={page_num}&pos=title&sortType=1',
+        'base_url': 'http://www.pingliang.gov.cn/api-gateway/jpaas-jsearch-web-server/interface/search/info?websiteid=&q=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%20%E4%BA%A4%E6%B5%81%E5%AD%A6%E4%B9%A0&pg=&cateid=faf661dbe7e94a839ac6f7a652de7af4&serviceId=7112f33f9410490396c03839bf99647f&p={page_num}&pos=title&sortType=1&pos=title,content,filenumber',
 
         'total_news_num': 1172,
         'each_page_news_num': 15,

@@ -45,7 +45,6 @@ class Scraper(PageMother):
         """
         super().__init__(city_info, content_xpath, is_headless, thread_num, proxies)
 
-
         self.method = method
         self.data_type = data_type
 
@@ -82,7 +81,7 @@ class Scraper(PageMother):
         # 设置遇到第几次空数据后，什么时候停止爬取
         self.max_null_news_num = 50
 
-        self.logger.info(f"{self.city_name} - 开始爬取数据 - 爬取方法为{self.method.upper()} - 数据类型为{self.data_type.upper()}")
+        self.logger.info(f"{self.city_name} - 地区编号为{self.city_code} - 开始爬取数据 - 爬取方法为{self.method.upper()} - 数据类型为{self.data_type.upper()}")
 
     def run(self):
         """

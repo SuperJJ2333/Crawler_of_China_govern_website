@@ -60,7 +60,7 @@ if __name__ == '__main__':
         'province': 'Jiangsu',
         'base_url': 'https://www.js.gov.cn/jsearchfront/interfaces/cateSearch.do',
 
-        'total_news_num': 90,
+        'total_news_num': 5000,
         'each_page_news_num': 19,
     }
 
@@ -71,18 +71,18 @@ if __name__ == '__main__':
         # '无锡市': [235, 320200000000],
         # '徐州市': [48, 320300000000],
         # '常州市': [1064, 320400000000],
-        # '苏州市': [615, 320500000000],
-        # '南通市': [266, 320600000000],
-        # '连云港市': [235, 320700000000],
-        # '淮安市': [220, 320800000000],
-        # '盐城市': [312, 320900000000],
+        '苏州市': [615, 320500000000],
+        '南通市': [266, 320600000000],
+        '连云港市': [235, 320700000000],
+        '淮安市': [220, 320800000000],
+        '盐城市': [312, 320900000000],
         '扬州市': [472, 321000000000],
         '镇江市': [180, 321100000000],
         '泰州市': [285, 321200000000],
         '宿迁市': [153, 321300000000]
     }
 
-    base_post_data = 'websiteid={city_code}&q=%E8%80%83%E5%AF%9F%E5%AD%A6%E4%B9%A0&p=1&pg=19&cateid=40&pos=&pq=&oq=&eq=&begin=&sortType=0&end=&tpl=38'
+    base_post_data = 'websiteid={city_code}&q=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F%20%E4%BA%A4%E6%B5%81%E5%AD%A6%E4%B9%A0&p=1&pg=19&cateid=40&pos=&pq=&oq=&eq=&begin=&sortType=0&end=&tpl=38'
     page_num_name = 'p'
 
     fiddler_proxies = {

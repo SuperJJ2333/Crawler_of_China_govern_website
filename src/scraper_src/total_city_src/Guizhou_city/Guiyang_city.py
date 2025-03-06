@@ -46,13 +46,13 @@ if __name__ == '__main__':
         'province': 'Guizhou',
         'base_url': 'https://api.so-gov.cn/query/s',
 
-        'total_news_num': 245,
+        'total_news_num': 1749,
         'each_page_news_num': 20,
     }
 
     headers = {"Host":"api.so-gov.cn","Connection":"keep-alive","Content-Length":"149","sec-ch-ua":"\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Microsoft Edge\";v=\"126\"","Accept":"application/json, text/javascript, */*; q=0.01","Content-Type":"application/x-www-form-urlencoded; charset=UTF-8","sec-ch-ua-mobile":"?0","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0","sec-ch-ua-platform":"\"Windows\"","Origin":"https://www.guiyang.gov.cn","Sec-Fetch-Site":"cross-site","Sec-Fetch-Mode":"cors","Sec-Fetch-Dest":"empty","Referer":"https://www.guiyang.gov.cn/","Accept-Encoding":"gzip, deflate, br, zstd","Accept-Language":"zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6"}
 
-    post_data = {'siteCode': '5201000056', 'tab': 'all', 'qt': '考察学习', 'keyPlace': '0', 'sort': 'relevance', 'timeOption': '0', 'locationCode': '520100', 'page': '2', 'pageSize': '20', 'ie': 'e64aacbc-bcc5-4f2e-aa32-e961836ae875'}
+    post_data = 'qt=%E5%AD%A6%E4%B9%A0%E8%80%83%E5%AF%9F+%E4%BA%A4%E6%B5%81%E5%AD%A6%E4%B9%A0&siteCode=5201000056&keyPlace=0&sort=relevance&fileType=&timeOption=0&locationCode=520100&tab=&page=2&pageSize=20&ie=c0162a65-8107-46ef-adfe-2e982496cef4'
 
     page_num_name = 'page'
     fiddler_proxies = {
